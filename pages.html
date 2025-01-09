@@ -3,12 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Приложения для DDE в проекте NurOS">
+    <meta name="description" content="Страницы сайта NurOS">
     <meta name="author" content="NurOS Team">
     <meta name="last-modified" content="2025-01-09">
-    <title>Приложения DDE | NurOS</title>
+    <title>Страницы сайта | NurOS</title>
+    
+    <!-- Подключение шрифта Comfortaa -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="72x72" href="assets/images/logos/logo72x72.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/images/logos/logo512x512.png">
+    
+    <!-- Встроенные стили -->
     <style>
-        /* Reset and Base Styles */
         :root {
             --primary-color: #007bff;
             --secondary-color: #0056b3;
@@ -18,10 +28,6 @@
             --text-secondary: #a0a0a0;
             --border-color: #2a2a2a;
             --card-background: #1d1d1d;
-            --hover-color: #2c2c2c;
-            --success-color: #00c853;
-            --warning-color: #ffd600;
-            --error-color: #ff3d00;
         }
 
         * {
@@ -40,7 +46,6 @@
             flex-direction: column;
         }
 
-        /* Typography */
         h1, h2, h3, h4, h5, h6 {
             font-weight: 600;
             margin-bottom: 1rem;
@@ -52,14 +57,12 @@
         h3 { font-size: 1.75rem; }
         h4 { font-size: 1.5rem; }
 
-        /* Layout */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 1rem;
         }
 
-        /* Header */
         .top-nav {
             background-color: var(--background-light);
             padding: 1rem 0;
@@ -113,7 +116,6 @@
             cursor: pointer;
         }
 
-        /* Hero Section */
         .hero {
             padding: 4rem 0;
             text-align: center;
@@ -127,34 +129,37 @@
             margin: 1rem auto;
         }
 
-        /* Content Section */
         .content {
             padding: 4rem 0;
         }
 
-        .content .card {
+        .card {
             background-color: var(--card-background);
             padding: 2rem;
-            margin-bottom: 2rem;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
         }
 
-        .content .card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
+        ul {
+            list-style: none;
+            padding: 0;
         }
 
-        .content .card ul {
-            list-style: disc inside;
-            margin-left: 1rem;
-        }
-
-        .content .card ul li {
+        ul li {
             margin-bottom: 0.5rem;
         }
 
-        /* Footer */
+        ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        ul li a:hover {
+            color: var(--primary-color);
+        }
+
         footer {
             background-color: var(--background-light);
             padding: 3rem 0 1rem;
@@ -199,16 +204,48 @@
             font-size: 0.9rem;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .main-menu {
                 display: none;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero {
+                padding: 2rem 0;
             }
 
             h1 { font-size: 2rem; }
             h2 { font-size: 1.75rem; }
             h3 { font-size: 1.5rem; }
             h4 { font-size: 1.25rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        @media print {
+            .top-nav,
+            .footer {
+                display: none;
+            }
+
+            body {
+                background: white;
+                color: black;
+            }
+
+            .container {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -224,6 +261,7 @@
                     <li><a href="about.html">О нас</a></li>
                     <li><a href="package-manager.html">Пакетный менеджер</a></li>
                     <li><a href="idea.html">Идея создания</a></li>
+                    <li><a href="pages.html" class="active">Страницы сайта</a></li>
                 </ul>
                 <div class="lang-selector">
                     <select>
@@ -240,36 +278,32 @@
     <main>
         <section class="hero">
             <div class="container">
-                <h1>Приложения DDE</h1>
-                <p class="subtitle">Приложения для Delta Desktop Environment в проекте NurOS</p>
+                <h1>Страницы сайта NurOS</h1>
+                <p class="subtitle">Здесь вы можете найти все страницы нашего сайта</p>
             </div>
         </section>
 
         <section class="content">
             <div class="container">
                 <div class="card">
-                    <h3>Описание DDE Приложений</h3>
-                    <p>DDE (Delta Desktop Environment) - это мощный и красивый рабочий стол, используемый в проекте NurOS. В этом разделе представлены приложения, разработанные для DDE.</p>
-                </div>
-                <div class="card">
-                    <h3>Основные Приложения</h3>
+                    <h3>Все страницы сайта</h3>
                     <ul>
-                        <li>Файловый менеджер Astrum</li>
-                        <li>MediaViewer</li>
-                        <li>AudioPlayer</li>
-                        <li>WiFi Manager</li>
-                        <li>Calculator</li>
-                        <li>Notepad</li>
-                        <li>И также их более но это базовые</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>Преимущества DDE Приложений</h3>
-                    <p>Использование приложений DDE в NurOS предоставляет следующие преимущества:</p>
-                    <ul>
-                        <li>Интуитивно понятный интерфейс</li>
-                        <li>Высокая производительность</li>
-                        <li>Совместимость с различными форматами файлов</li>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="apg.html">APG</a></li>
+                        <li><a href="astrum.html">Astrum</a></li>
+                        <li><a href="ata.html">ATA</a></li>
+                        <li><a href="contact.html">Контакты</a></li>
+                        <li><a href="dde.html">DDE</a></li>
+                        <li><a href="ddeapps.html">DDE Apps</a></li>
+                        <li><a href="docs/index.md">Документация</a></li>
+                        <li><a href="idea.html">Идея создания</a></li>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="neoinit.html">NeoInit</a></li>
+                        <li><a href="package-manager.html">Пакетный менеджер</a></li>
+                        <li><a href="tex.html">Tex</a></li>
+                        <li><a href="tulpar.html">Tulpar</a></li>
+                        <li><a href="tulpar-server.html">Tulpar Server</a></li>
+                        <li><a href="upkgt.html">Upkgt</a></li>
                     </ul>
                 </div>
             </div>
@@ -298,7 +332,7 @@
             </div>
             <div class="footer-bottom">
                 <p>© 2025 NurOS. Все права защищены.</p>
-                <p>Последнее обновление: 2025-01-09 17:17:25 UTC</p>
+                <p>Последнее обновление: 2025-01-09 17:09:22 UTC</p>
                 <p>Страница обновлена: AnmiTaliDev</p>
             </div>
         </div>

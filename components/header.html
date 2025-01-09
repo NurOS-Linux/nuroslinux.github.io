@@ -1,0 +1,88 @@
+<header>
+    <nav class="top-nav">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="assets/images/logos/logo72x72.png" alt="NurOS Logo"></a>
+            </div>
+            <ul class="main-menu">
+                <li><a href="../index.html">Главная</a></li>
+                <li><a href="../about.html">О нас</a></li>
+                <li><a href="../package-manager.html">Пакетный менеджер</a></li>
+                <li><a href="../idea.html">Идея создания</a></li>
+            </ul>
+            <div class="lang-selector">
+                <select>
+                    <option value="ru">RU</option>
+                    <option value="kz">KZ</option>
+                    <option value="en">EN</option>
+                    <option value="uk">UK</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+</header>
+<style>
+    /* Header */
+    :root {
+        --primary-color: #007bff;
+        --secondary-color: #0056b3;
+        --background-dark: #121212;
+        --background-light: #1a1a1a;
+        --text-color: #ffffff;
+        --text-secondary: #a0a0a0;
+        --border-color: #2a2a2a;
+    }
+
+    .top-nav {
+        background-color: var(--background-light);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .top-nav .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo img {
+        height: 72px;
+        width: auto;
+    }
+
+    .main-menu {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+    }
+
+    .main-menu a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease, border-bottom 0.3s ease;
+        padding-bottom: 0.5rem;
+    }
+
+    .main-menu a:hover {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--primary-color);
+    }
+
+    .main-menu a.active {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--primary-color);
+    }
+
+    .lang-selector select {
+        background-color: var(--background-dark);
+        color: var(--text-color);
+        border: 1px solid var(--border-color);
+        padding: 0.5rem;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+</style>

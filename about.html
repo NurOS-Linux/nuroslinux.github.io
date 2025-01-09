@@ -3,29 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="О проекте NurOS - история создания, цели и команда разработчиков">
+    <meta name="description" content="О проекте NurOS - команда разработчиков">
     <meta name="author" content="NurOS Team">
-    <meta name="last-modified" content="2025-01-08">
-    <title>О нас | NurOS - Независимый GNU/Linux дистрибутив</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <meta name="last-modified" content="2025-01-09">
+    <title>О нас | NurOS - Команда разработчиков</title>
+    
+    <!-- Подключение шрифта Comfortaa -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="72x72" href="assets/images/logos/logo72x72.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/images/logos/logo512x512.png">
+    
+    <!-- Встроенные стили -->
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #0056b3;
+            --background-dark: #121212;
+            --background-light: #1a1a1a;
+            --text-color: #ffffff;
+            --text-secondary: #a0a0a0;
+            --border-color: #2a2a2a;
+            --card-background: #1d1d1d;
+            --hover-color: #2c2c2c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comfortaa', sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-family: 'Comfortaa', sans-serif;
+        }
+
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.75rem; }
+        h4 { font-size: 1.5rem; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .top-nav {
+            background-color: var(--background-light);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .top-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 72px;
+            width: auto;
+        }
+
+        .main-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .main-menu a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            padding-bottom: 0.5rem;
+        }
+
+        .main-menu a:hover {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .main-menu a.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .lang-selector select {
+            background-color: var(--background-dark);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .about-hero {
+            padding: 4rem 0;
+            text-align: center;
+            background-color: var(--background-light);
+        }
+
+        .about-hero .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 1rem auto;
+        }
+
+        .about-content {
+            padding: 4rem 0;
+        }
+
+        .team-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .member-card {
+            background-color: var(--card-background);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .member-card .role {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        footer {
+            background-color: var(--background-light);
+            padding: 3rem 0 1rem;
+            margin-top: auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--text-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-menu {
+                display: none;
+            }
+
+            .team-members {
+                grid-template-columns: 1fr;
+            }
+
+            .about-hero {
+                padding: 2rem 0;
+            }
+
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.75rem; }
+            h3 { font-size: 1.5rem; }
+            h4 { font-size: 1.25rem; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .member-card {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        @media print {
+            .top-nav,
+            .footer {
+                display: none;
+            }
+
+            body {
+                background: white;
+                color: black;
+            }
+
+            .container {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="announcement-bar">
-        <p>До релиза NurOS Juldyz осталось: 16 дней! 🚀</p>
-    </div>
-
     <header>
         <nav class="top-nav">
             <div class="container">
                 <div class="logo">
-                    <a href="/"><img src="assets/images/logos/logo72x72.png" alt="NurOS Logo"></a>
+                    <a href="index.html"><img src="assets/images/logos/logo72x72.png" alt="NurOS Logo"></a>
                 </div>
                 <ul class="main-menu">
-                    <li><a href="/">Главная</a></li>
-                    <li><a href="/about" class="active">О нас</a></li>
-                    <li><a href="/package-manager">Пакетный менеджер</a></li>
-                    <li><a href="/idea">Идея создания</a></li>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html" class="active">О нас</a></li>
+                    <li><a href="package-manager.html">Пакетный менеджер</a></li>
+                    <li><a href="idea.html">Идея создания</a></li>
                 </ul>
                 <div class="lang-selector">
                     <select>
@@ -49,82 +296,53 @@
 
         <section class="about-content">
             <div class="container">
-                <div class="about-grid">
-                    <article class="mission">
-                        <h2>Наша миссия</h2>
-                        <p>NurOS стремится создать современный, независимый и инновационный дистрибутив GNU/Linux, который сочетает в себе простоту использования с мощными возможностями для разработчиков. Основанный в Казахстане, наш проект объединяет разработчиков со всего мира.</p>
-                    </article>
-
-                    <article class="values">
-                        <h2>Наши ценности</h2>
-                        <ul>
-                            <li>Открытость и прозрачность разработки</li>
-                            <li>Независимость от других дистрибутивов</li>
-                            <li>Инновационный подход к пакетному менеджменту</li>
-                            <li>Сообщество как главная движущая сила</li>
-                            <li>Простота и эффективность использования</li>
-                        </ul>
-                    </article>
-
-                    <article class="roadmap">
-                        <h2>План развития</h2>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <h3>2025 Q1</h3>
-                                <p>Релиз NurOS Juldyz (24.01.2025)</p>
-                            </div>
-                            <div class="timeline-item">
-                                <h3>2025 Q2</h3>
-                                <p>Запуск официального репозитория пакетов</p>
-                            </div>
-                            <div class="timeline-item">
-                                <h3>2025 Q3</h3>
-                                <p>Релиз системы инициализации neoinit</p>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="tech-stack">
-                        <h2>Технологический стек</h2>
-                        <div class="tech-grid">
-                            <div class="tech-item">
-                                <h4>tulpar</h4>
-                                <p>Современный пакетный менеджер с поддержкой .apg пакетов</p>
-                            </div>
-                            <div class="tech-item">
-                                <h4>dde</h4>
-                                <p>Графическое окружение рабочего стола</p>
-                            </div>
-                            <div class="tech-item">
-                                <h4>neoinit</h4>
-                                <p>Инновационная система инициализации</p>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="team">
-                        <h2>Команда разработчиков</h2>
-                        <div class="team-members">
-                            <div class="member">
-                                <h4>AnmiTaliDev</h4>
-                                <p>Основатель проекта</p>
-                                <p>Maintainer</p>
-                            </div>
-                            <!-- Другие члены команды будут добавлены позже -->
-                        </div>
-                    </article>
-
-                    <article class="contribute">
-                        <h2>Как присоединиться к разработке</h2>
-                        <p>Мы всегда рады новым участникам! Вы можете присоединиться к разработке NurOS несколькими способами:</p>
-                        <ul>
-                            <li>Создавать пакеты для репозитория</li>
-                            <li>Участвовать в разработке компонентов</li>
-                            <li>Помогать с документацией</li>
-                            <li>Тестировать новые версии</li>
-                        </ul>
-                        <a href="https://github.com/NurOS-Linux" class="button primary">Присоединиться на GitHub</a>
-                    </article>
+                <h2>Наша команда</h2>
+                <div class="team-members">
+                    <div class="member-card">
+                        <h4>AnmiTaliDev</h4>
+                        <p>Основатель проекта, основной разработчик</p>
+                        <p class="role">Maintainer</p>
+                    </div>
+                    <div class="member-card">
+                        <h4>GoldenVadim</h4>
+                        <p>Разработчик, один из участников CMM</p>
+                        <p class="role">Основной разработчик, Maintainer проекта tulpar</p>
+                    </div>
+                    <div class="member-card">
+                        <h4>Meigoc</h4>
+                        <p>Разработчик, руководитель проекта tulpar-server</p>
+                        <p class="role">Основной разработчик, Maintainer проекта tulpar-server</p>
+                    </div>
+                    <div class="member-card">
+                        <h4>ckelik002</h4>
+                        <p>Дизайнер, разработчик DDE Apps</p>
+                        <p class="role">Дизайнер</p>
+                    </div>
+                    <div class="member-card">
+                        <h4>CosmoBlade</h4>
+                        <p>Дизайнер, второй координатор дизайнеров</p>
+                        <p class="role">Дизайнер</p>
+                    </div>
+                    <div class="member-card">
+                        <h4>LapysMYT</h4>
+                        <p>Python разработчик</p>
+                        <p class="role">Разработчик</p>
+                    </div>
+                    <div class="member-card">
+                        <h4>CHeLoVeK993</h4>
+                        <p>Lua и Python разработчик, разработчик DDE Apps</p>
+                        <p class="role">Разработчик</p>
+                    </div>
+                    <div class="member-card">
+                        <h4>ShwoubleTrouble</h4>
+                        <p>Python разработчик</p>
+                        <p class="role">Разработчик</p>
+                    </div>
+                    <div class="member-card">
+                        <h4>GalaxyBeasy</h4>
+                        <p>Full-Stack разработчик</p>
+                        <p class="role">Разработчик</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -146,13 +364,13 @@
                     <h4>Разработка</h4>
                     <ul>
                         <li><a href="https://github.com/NurOS-Linux">GitHub</a></li>
-                        <li><a href="/contact">Обратная связь</a></li>
+                        <li><a href="contact.html">Обратная связь</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>© 2025 NurOS. Все права защищены.</p>
-                <p>Последнее обновление: 2025-01-08 17:43:19 UTC</p>
+                <p>Последнее обновление: 2025-01-09 15:47:47 UTC</p>
                 <p>Страница обновлена: AnmiTaliDev</p>
             </div>
         </div>
