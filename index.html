@@ -1,111 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Modern Linux Distribution">
-    <title>NurOS - Modern Linux Distribution</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-    <link href="./css/style.css" rel="stylesheet">
+    <meta name="description" content="NurOS - Независимый GNU/Linux дистрибутив, основанный в Казахстане">
+    <meta name="author" content="NurOS Team">
+    <meta name="last-modified" content="2025-01-08">
+    <title>NurOS - Независимый GNU/Linux дистрибутив</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" sizes="72x72" href="assets/images/logos/logo72x72.png">
 </head>
 <body>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script async src="./js/AOS.js"></script>
+    <div class="announcement-bar">
+        <p>До релиза NurOS Juldyz осталось: 16 дней! 🚀</p>
+    </div>
 
     <header>
-        <nav class="container">
-            <div class="logo">NurOS</div>
-            <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#about">About</a>
-                <a href="#team">Team</a>
-                <a href="#download">Download</a>
-                <a href="#contact">Contact</a>
+        <nav class="top-nav">
+            <div class="container">
+                <div class="logo">
+                    <a href="/"><img src="assets/images/logos/logo72x72.png" alt="NurOS Logo"></a>
+                </div>
+                <ul class="main-menu">
+                    <li><a href="/" class="active">Главная</a></li>
+                    <li><a href="/about">О нас</a></li>
+                    <li><a href="/package-manager">Пакетный менеджер</a></li>
+                    <li><a href="/idea">Идея создания</a></li>
+                </ul>
+                <div class="lang-selector">
+                    <select>
+                        <option value="ru">RU</option>
+                        <option value="kz">KZ</option>
+                        <option value="en">EN</option>
+                        <option value="uk">UK</option>
+                    </select>
+                </div>
             </div>
         </nav>
     </header>
 
-    <section class="hero">
-        <div class="container">
-            <h1 data-aos="fade-up">NurOS</h1>
-            <p data-aos="fade-up" data-aos-delay="200">A distribution created for developers and users who value stability and performance. Inspired by the best aspects of Linux, NurOS offers simplicity and efficiency.</p>
-        </div>
-    </section>
-
-    <section id="features" class="features">
-        <div class="container">
-            <h2 data-aos="fade-up">Key Features</h2>
-            <div class="feature-grid">
-                <div class="feature-card" data-aos="fade-up">
-                    <h3>Pure Linux From Scratch</h3>
-                    <p>Not based on any existing distribution - built from the ground up for maximum control and efficiency.</p>
-                </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                    <h3>Minimal & Clean</h3>
-                    <p>Contains only essential utilities while maintaining functionality and user experience.</p>
-                </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                    <h3>Open Source</h3>
-                    <p>Completely free and open-source under GPL 3 license.</p>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>NurOS</h1>
+                <p class="subtitle">Новый независимый GNU/Linux дистрибутив</p>
+                <p class="release-date">Релиз NurOS Juldyz: 24.01.2025</p>
+                <div class="cta-buttons">
+                    <a href="#download" class="button primary">Скачать (скоро)</a>
+                    <a href="/docs" class="button secondary">Документация</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="release-date">
-        <div class="container">
-            <h2 data-aos="fade-up">Release Date</h2>
-            <div class="countdown" data-aos="fade-up" data-aos-delay="200">
-                <div id="countdown">January 24, 2025</div>
-            </div>
-        </div>
-    </section>
+        <section class="features">
+            <div class="container">
+                <h2>Ключевые компоненты</h2>
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <h3>tulpar</h3>
+                        <p>Современный пакетный менеджер с поддержкой .apg пакетов</p>
+                        <a href="/tulpar" class="learn-more">Подробнее →</a>
+                    </article>
 
-    <section id="team" class="team">
-        <div class="container">
-            <h2 data-aos="fade-up">Development Team</h2>
-            <div class="team-grid">
-                <div class="team-member" data-aos="fade-up">
-                    <h3>taliildar</h3>
-                    <p>Project Lead and Developer</p>
-                </div>
-                <div class="team-member" data-aos="fade-up" data-aos-delay="100">
-                    <h3>GoldenVadim</h3>
-                    <p>Project administrator</p>
-                </div>
-                <div class="team-member" data-aos="fade-up" data-aos-delay="200">
-                    <h3>AnmiTali Team</h3>
-                    <p>ShwoubleTrouble, Meigoc. CHeLoVek993</p>
+                    <article class="feature-card">
+                        <h3>dde</h3>
+                        <p>Современное графическое окружение рабочего стола</p>
+                        <a href="/dde" class="learn-more">Подробнее →</a>
+                    </article>
+
+                    <article class="feature-card">
+                        <h3>neoinit</h3>
+                        <p>Система инициализации следующего поколения</p>
+                        <a href="/neoinit" class="learn-more">Скоро →</a>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="download" class="download">
-        <div class="container">
-            <h2 data-aos="fade-up">Download NurOS</h2>
-            <p data-aos="fade-up" data-aos-delay="100">Coming soon...</p>
-            <a href="#" class="download-button" data-aos="fade-up" data-aos-delay="200">Download</a>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 data-aos="fade-up">Contact Us</h2>
-            <div class="contact-links" data-aos="fade-up" data-aos-delay="100">
-                <a href="https://t.me/nuros_tg">Telegram: nuros_tg</a>
-                <a href="https://t.me/anmitalicomm">Community: anmitalicomm</a>
-                <a href="mailto:nuros@anmitali.kz">Email: nuros@anmitali.kz</a>
+        <section class="tools">
+            <div class="container">
+                <h2>Инструменты экосистемы</h2>
+                <div class="tools-grid">
+                    <div class="tool-item">
+                        <h4>upkgt</h4>
+                        <p>Универсальный установщик пакетов</p>
+                    </div>
+                    <div class="tool-item">
+                        <h4>Astrum</h4>
+                        <p>Файловый менеджер</p>
+                    </div>
+                    <div class="tool-item">
+                        <h4>tex</h4>
+                        <p>TUI текстовый редактор</p>
+                    </div>
+                    <div class="tool-item">
+                        <h4>ata</h4>
+                        <p>Архиватор на основе zstd</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section class="latest-news">
+            <div class="container">
+                <h2>Последние обновления</h2>
+                <div class="news-grid">
+                    <article class="news-item">
+                        <time datetime="2025-01-08">08.01.2025</time>
+                        <h3>Подготовка к релизу</h3>
+                        <p>Команда NurOS активно готовится к первому стабильному релизу</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="container">
-            <p>Copyright © NurOS - AnmiTali 2024 | Licensed under GPL3<br>Linux® is registered trademark of Linus Torvalds in Kazakhstan and in other countries.</p>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Сообщество</h4>
+                    <ul>
+                        <li><a href="https://t.me/nuros_ru">Telegram RU</a></li>
+                        <li><a href="https://t.me/nuros_kz">Telegram KZ</a></li>
+                        <li><a href="https://t.me/anmitalilinuxnuros">Dev Channel</a></li>
+                        <li><a href="https://t.me/nuros_tg">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Разработка</h4>
+                    <ul>
+                        <li><a href="https://github.com/NurOS-Linux">GitHub</a></li>
+                        <li><a href="/contact">Обратная связь</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 NurOS. Все права защищены.</p>
+                <p>Последнее обновление: 08.01.2025 17:41 UTC</p>
+            </div>
         </div>
     </footer>
-
 </body>
 </html>
