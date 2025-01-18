@@ -3,35 +3,381 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NurOS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Официальный сайт независимого GNU/Linux дистрибутива NurOS">
+    <meta name="keywords" content="Linux, NurOS, GNU/Linux, дистрибутив, open source, Tulpar, APG, DDE">
+    <meta name="author" content="AnmiTaliDev">
+    <meta name="last-modified" content="2025-01-18 18:09:50">
+    <title>NurOS - Современный GNU/Linux дистрибутив</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #1a73e8;
+            --secondary: #8ab4f8;
+            --bg-dark: #202124;
+            --bg-light: #292a2d;
+            --text: #e8eaed;
+            --text-secondary: #9aa0a6;
+            --card: #2d2e31;
+            --hover: #35363a;
+            --success: #81c995;
+            --radius: 12px;
+            --shadow: 0 4px 12px rgba(0,0,0,0.2);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
+            font-family: 'Comfortaa', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: var(--bg-light);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        nav {
+            margin-top: 1.5rem;
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: 'Comfortaa', cursive;
-            background-color: #121212;
-            color: #BB86FC;
+            gap: 1.5rem;
+            flex-wrap: wrap;
         }
-        .container {
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            background: var(--hover);
+            color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .info {
+            background: var(--card);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .info:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+
+        .info h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .info h3 {
+            color: var(--secondary);
+            margin: 1rem 0;
+            font-size: 1.4rem;
+        }
+
+        .info ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .info ul li {
+            margin: 0.8rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .info ul li::before {
+            content: "•";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+        }
+
+        .button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: var(--text);
+            text-decoration: none;
+            border-radius: var(--radius);
+            margin-top: 1rem;
+            transition: var(--transition);
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26,115,232,0.4);
+        }
+
+        .component-details {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin-top: 1rem;
+        }
+
+        .meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        footer {
+            background: var(--bg-light);
             text-align: center;
+            padding: 1.5rem;
+            margin-top: auto;
         }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 0.5em;
+
+        footer p {
+            color: var(--text-secondary);
+            margin: 0.5rem 0;
         }
-        p {
-            font-size: 1.2em;
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <header>
         <h1>NurOS</h1>
-        <p>Сайт nuros.org на ремонте/в разработке</p>
-    </div>
+        <p>Современный независимый GNU/Linux дистрибутив</p>
+        <nav>
+            <a href="#about">О системе</a>
+            <a href="#tulpar">Tulpar</a>
+            <a href="#components">Компоненты</a>
+            <a href="#team">Команда</a>
+            <a href="#contact">Контакты</a>
+        </nav>
+    </header>
+
+    <main class="content">
+        <section id="about" class="info">
+            <h2>О системе</h2>
+            <p>NurOS — это инновационный независимый GNU/Linux дистрибутив, созданный с нуля для обеспечения максимальной производительности и безопасности.</p>
+            
+            <h3>Основные задачи:</h3>
+            <ul>
+                <li>Информирование пользователей о дистрибутиве и его компонентах</li>
+                <li>Предоставление доступа к документам, пакетам и поддержке</li>
+                <li>Связь с разработчиками через Telegram-каналы</li>
+                <li>Безопасное скачивание дистрибутива через Telegram</li>
+            </ul>
+            <a href="https://t.me/nuros_downloads" class="button">Скачать NurOS</a>
+        </section>
+
+        <section id="tulpar" class="info">
+            <h2>Tulpar - Менеджер пакетов</h2>
+            <div class="component-details">
+                <h3>Основные возможности:</h3>
+                <ul>
+                    <li>Быстрая установка и обновление пакетов</li>
+                    <li>Интеграция с APG форматом</li>
+                    <li>Автоматическое разрешение зависимостей</li>
+                    <li>Система контроля версий пакетов</li>
+                </ul>
+                <p class="meta">Maintainer: GoldenVadim</p>
+            </div>
+        </section>
+
+        <section id="apg" class="info">
+            <h2>APG - Формат пакетов</h2>
+            <div class="component-details">
+                <h3>Характеристики:</h3>
+                <ul>
+                    <li>Современный формат упаковки</li>
+                    <li>Оптимизированная структура метаданных</li>
+                    <li>Встроенная система верификации</li>
+                    <li>Поддержка скриптов пре/пост установки</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="components" class="info">
+            <h2>Основные компоненты</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>UPKGT</h3>
+                    <p>Инструмент для улучшения пользовательского опыта и управления пакетами</p>
+                </div>
+                <div class="card">
+                    <h3>Astrum</h3>
+                    <p>Компонент системного управления и администрирования</p>
+                </div>
+                <div class="card">
+                    <h3>Tex</h3>
+                    <p>Набор инструментов для системного администрирования</p>
+                </div>
+                <div class="card">
+                    <h3>DDE</h3>
+                    <p>Современное окружение рабочего стола</p>
+                </div>
+                <div class="card">
+                    <h3>Ata</h3>
+                    <p>Архиватор на основе Zstd (AnmiTali Archivator)</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="history" class="info">
+            <h2>История проекта</h2>
+            <ul>
+                <li>Ноябрь 2023 — Начало изучения Linux</li>
+                <li>31 декабря 2023 — Создание первого сайта проекта</li>
+                <li>1 мая 2024 — Начало разработки под названием OrangeOS</li>
+                <li>Сентябрь 2024 — Знакомство с GoldenVadim и изучение LFS</li>
+                <li>Переименование проекта в NurOS</li>
+            </ul>
+        </section>
+
+        <section id="team" class="info">
+            <h2>Команда разработки</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>AnmiTaliDev</h3>
+                    <p>Основатель проекта, основной разработчик, Maintainer</p>
+                </div>
+                <div class="card">
+                    <h3>GoldenVadim</h3>
+                    <p>Разработчик CMM, Maintainer проекта Tulpar</p>
+                </div>
+                <div class="card">
+                    <h3>Meigoc</h3>
+                    <p>Руководитель и Maintainer проекта Tulpar-server</p>
+                </div>
+                <div class="card">
+                    <h3>ckelik002</h3>
+                    <p>Дизайнер, разработчик DDE Apps</p>
+                </div>
+                <div class="card">
+                    <h3>CosmoBlade</h3>
+                    <p>Дизайнер, координатор дизайнеров</p>
+                </div>
+                <div class="card">
+                    <h3>LapysMYT</h3>
+                    <p>Python разработчик</p>
+                </div>
+                <div class="card">
+                    <h3>CHeLoVeK993</h3>
+                    <p>Lua и Python разработчик, DDE Apps</p>
+                </div>
+                <div class="card">
+                    <h3>ShwoubleTrouble</h3>
+                    <p>Python разработчик</p>
+                </div>
+                <div class="card">
+                    <h3>GalaxyBeasy</h3>
+                    <p>Full-Stack разработчик</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="info">
+            <h2>Связь с нами</h2>
+            <p>Наши Telegram-каналы:</p>
+            <div class="grid">
+                <div class="card">
+                    <h3>Основной канал</h3>
+                    <p><a href="https://t.me/nuros_ru">@nuros_ru</a></p>
+                </div>
+                <div class="card">
+                    <h3>Казахстанское сообщество</h3>
+                    <p><a href="https://t.me/nuros_kz">@nuros_kz</a></p>
+                </div>
+                <div class="card">
+                    <h3>Канал разработки</h3>
+                    <p><a href="https://t.me/anmitalilinuxnuros">@anmitalilinuxnuros</a></p>
+                </div>
+                <div class="card">
+                    <h3>Поддержка</h3>
+                    <p><a href="https://t.me/nuros_tg">@nuros_tg</a></p>
+                </div>
+                <div class="card">
+                    <h3>Загрузки</h3>
+                    <p><a href="https://t.me/nuros_downloads">@nuros_downloads</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 NurOS. Создано с любовью командой NurOS</p>
+    </footer>
 </body>
 </html>
