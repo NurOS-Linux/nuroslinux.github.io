@@ -1,12 +1,11 @@
-# Table of contents
+# Обзор
 
-* [NurOS](README.md)
-* [Page](page.md)
+* [NurOS](index.md)
 
-## tulpar
+## Tulpar
 
-* [tulpar](tulpar/tulpar.md)
-* [Файлы tulpar](tulpar/faily-tulpar.md)
+* [Tulpar](tulpar/tulpar.md)
+* [Файлы Tukpar](tulpar/faily-tulpar.md)
 
 ## UPKGT
 
@@ -20,7 +19,7 @@
 * [Исправление ошибок](upkgt/ispravlenie-oshibok.md)
 * [Вклад](upkgt/vklad.md)
 
-## apg <a href="#apg-pkg" id="apg-pkg"></a>
+## APG
 
 * [Как собрать apg](apg-pkg/howtobuildapg.md)
 * [Структура пакета](apg-pkg/struktura-paketa.md)
@@ -28,7 +27,7 @@
 * [apgbuild](apg-pkg/apgbuild.md)
 * [Как происходит установка пакета](apg-pkg/kak-proiskhodit-ustanovka-paketa.md)
 
-## Tulpar-server
+## Tulpar Server
 
 * [Tulpar Server](tulpar-server/tulpar-server.md)
 * [Tulpar Server api](tulpar-server/tulpar-server-api.md)
@@ -39,7 +38,7 @@
 
 * [Delta Apps](delta-apps/delta-apps.md)
 
-## Пакеты <a href="#packages-wiki" id="packages-wiki"></a>
+## Пакеты
 
 * [nano](packages-wiki/nano.md)
 * [apginstall](packages-wiki/apginstall.md)
