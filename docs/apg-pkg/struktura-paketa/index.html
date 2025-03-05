@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Структура пакета - NurOS</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">NurOS</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">NurOS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../summary/" class="nav-link">Обзор</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Apg pkg</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../apgbuild/" class="dropdown-item">apgbuild</a>
+</li>
+                                    
+<li>
+    <a href="../fail-metadata.json/" class="dropdown-item">Файл metadata.json</a>
+</li>
+                                    
+<li>
+    <a href="../howtobuildapg/" class="dropdown-item">Как собрать apg</a>
+</li>
+                                    
+<li>
+    <a href="../kak-proiskhodit-ustanovka-paketa/" class="dropdown-item">Как происходит установка пакета</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Структура пакета</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Delta apps</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../delta-apps/delta-apps/" class="dropdown-item">Delta Apps</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Packages wiki</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../packages-wiki/apginstall/" class="dropdown-item">apginstall</a>
+</li>
+                                    
+<li>
+    <a href="../../packages-wiki/hyperfetch/" class="dropdown-item">HyperFetch</a>
+</li>
+                                    
+<li>
+    <a href="../../packages-wiki/nano/" class="dropdown-item">nano</a>
+</li>
+                                    
+<li>
+    <a href="../../packages-wiki/skoro.../" class="dropdown-item">Скоро...</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Tulpar</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../tulpar/faily-tulpar/" class="dropdown-item">Файлы tulpar</a>
+</li>
+                                    
+<li>
+    <a href="../../tulpar/tulpar/" class="dropdown-item">tulpar</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Tulpar server</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../tulpar-server/cveta-v-konfiguracii/" class="dropdown-item">Цвета в конфигурации</a>
+</li>
+                                    
+<li>
+    <a href="../../tulpar-server/poluchenie-ssl/" class="dropdown-item">Получение SSL</a>
+</li>
+                                    
+<li>
+    <a href="../../tulpar-server/tulpar-server-api/" class="dropdown-item">Tulpar Server api</a>
+</li>
+                                    
+<li>
+    <a href="../../tulpar-server/tulpar-server/" class="dropdown-item">Tulpar Server</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Upkgt</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../upkgt/" class="dropdown-item">UPKGT - Универсальный Менеджер Пакетов</a>
+</li>
+                                    
+<li>
+    <a href="../../upkgt/api/" class="dropdown-item">API</a>
+</li>
+                                    
+<li>
+    <a href="../../upkgt/dopolnitelno/" class="dropdown-item">Дополнительно</a>
+</li>
+                                    
+<li>
+    <a href="../../upkgt/ispolzovanie/" class="dropdown-item">Использование</a>
+</li>
+                                    
+<li>
+    <a href="../../upkgt/ispravlenie-oshibok/" class="dropdown-item">Исправление ошибок</a>
+</li>
+                                    
+<li>
+    <a href="../../upkgt/konfiguraciya/" class="dropdown-item">Конфигурация</a>
+</li>
+                                    
+<li>
+    <a href="../../upkgt/pakety/" class="dropdown-item">Пакеты</a>
+</li>
+                                    
+<li>
+    <a href="../../upkgt/ustanovka/" class="dropdown-item">Установка</a>
+</li>
+                                    
+<li>
+    <a href="../../upkgt/vklad/" class="dropdown-item">Вклад</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../kak-proiskhodit-ustanovka-paketa/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../delta-apps/delta-apps/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#_1" class="nav-link">Структура пакета</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#apg-tulpar" class="nav-link">Структура пакета APG для Tulpar</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="_1">Структура пакета</h1>
+<h2 id="apg-tulpar">Структура пакета APG для Tulpar</h2>
+<p>APG на самом деле не является полноценным форматом, а скорее расширением. Основной формат пакетов — <code>.tar.xz</code>.</p>
+<h3 id="_2">Важная информация</h3>
+<p>Перед созданием пакета убедитесь, что все исполняемые файлы и скрипты имеют соответствующие права:</p>
+<pre><code class="language-sh">chmod +x выполнимый_файл
+</code></pre>
+<h3 id="_3">Структура пакета</h3>
+<p>Пакет APG состоит из следующих компонентов:</p>
+<ul>
+<li><code>metadata.json</code> — содержит информацию о пакете.</li>
+<li><code>md5sums</code> — контрольные суммы MD5 (также содержит список файлов).</li>
+<li><code>data/</code> — каталог с директориями и файлами, которые будут распакованы в корень системы.</li>
+<li>scripts/ — каталог с скриптами post/pre (не обязателен).</li>
+</ul>
+<p><strong>Важно!</strong></p>
+<ul>
+<li>Каталог <code>data/</code> не должен нарушать <a href="https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html">Filesystem Hierarchy Standard (FHS)</a>.</li>
+<li>Не добавляйте пустые папки, относящиеся к FHS.</li>
+</ul>
+<h3 id="_4">Пример структуры пакета</h3>
+<pre><code>Пример пакета .apg
+├── metadata.json
+├── md5sums
+└── data
+    ├── usr
+    │   ├── bin
+    │   │   └── testapg
+    │   ├── lib
+    │   │   └── libtestapg.so
+</code></pre>
+<h3 id="_5">Дополнительная информация</h3>
+<p>Новейший стандарт пакетов .apg можно посмотреть <a href="https://github.com/NurOS-Linux/exampleapg">тут</a>.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
