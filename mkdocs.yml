@@ -1,3 +1,7 @@
 site_name: NurOS
 docs_dir: docs_src
 site_dir: docs
+theme:
+  logo: assets/favicon.png
+extra:
+  homepage: https://nuros.org
