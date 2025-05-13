@@ -3,171 +3,655 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Официальный сайт независимого GNU/Linux дистрибутива NurOS">
-    <meta name="keywords" content="Linux, NurOS, GNU/Linux, дистрибутив, open source, Tulpar, APG, DDE">
-    <meta name="author" content="AnmiTaliDev">
-    <title>NurOS - Современный GNU/Linux дистрибутив</title>
-    <link rel="icon" href="./assets/favicon.png" type="image/png" media="(prefers-color-scheme: light)">
-    <link rel="icon" href="./assets/favicon-dark.png" type="image/png" media="(prefers-color-scheme: dark)">
-    <link rel="stylesheet" href="./style.css">
+    <title>NurOS - Независимый Linux дистрибутив</title>
+    <style>
+        /* Base Styles - Modified New Minimalist with Dark Theme */
+        :root {
+            --primary-color: #1a5b9c;
+            --primary-hover: #0f4788;
+            --secondary-color: #121212;
+            --accent-color: #8ab4e8;
+            --text-color: #e0e0e0;
+            --text-dark: #1a1a1a;
+            --background: #1a1a1a;
+            --foreground: #262626;
+            --border: 1px solid #333;
+            --border-radius: 8px;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 8rem;
+            --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background);
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent-color);
+            transition: opacity 0.3s ease;
+        }
+
+        a:hover {
+            opacity: 0.9;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+            color: var(--text-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border: none;
+            border-radius: var(--border-radius);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            color: white;
+        }
+
+        .btn-alt {
+            background-color: transparent;
+            color: var(--text-color);
+            border: var(--border);
+        }
+
+        .btn-alt:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-color);
+        }
+
+        /* Header */
+        header {
+            padding: var(--spacing-md) 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--foreground);
+            z-index: 1000;
+            border-bottom: var(--border);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .tagline {
+            font-size: 0.875rem;
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: var(--spacing-md);
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background-color: var(--text-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background-color: var(--secondary-color);
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/random/1920x1080/?galaxy,stars');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-color);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--accent-color);
+        }
+
+        .cta-buttons {
+            margin-top: var(--spacing-md);
+        }
+
+        /* About Section */
+        .about {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--background);
+        }
+
+        .about-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .about-content p {
+            margin-bottom: var(--spacing-md);
+            font-size: 1.1rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--secondary-color);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .feature-card {
+            background-color: var(--foreground);
+            padding: var(--spacing-md);
+            border: var(--border);
+            border-radius: var(--border-radius);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card h3 {
+            margin-bottom: var(--spacing-sm);
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        /* Requirements Section */
+        .requirements {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--background);
+        }
+
+        .requirements-content {
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 2;
+        }
+
+        /* Download Section */
+        .download {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--secondary-color);
+        }
+
+        .download-options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .download-note {
+            margin-top: var(--spacing-xs);
+            color: var(--accent-color);
+            text-align: center;
+            max-width: 500px;
+        }
+
+        /* Team Section */
+        .team {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--background);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .team-member {
+            padding: var(--spacing-md);
+            border: var(--border);
+            border-radius: var(--border-radius);
+            background-color: var(--foreground);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-member h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+            color: var(--accent-color);
+        }
+
+        .team-member .role {
+            font-weight: 500;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .team-member .skills {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            opacity: 0.8;
+        }
+
+        /* Community Section */
+        .community {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--secondary-color);
+        }
+
+        .community-content {
+            text-align: center;
+        }
+
+        .community-content p {
+            margin-bottom: var(--spacing-md);
+            font-size: 1.1rem;
+        }
+
+        .community-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+        }
+
+        /* Footer */
+        footer {
+            padding: var(--spacing-lg) 0;
+            border-top: var(--border);
+            background-color: var(--foreground);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-content p {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            opacity: 0.8;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--foreground);
+                display: none;
+                padding: var(--spacing-md);
+                border-bottom: var(--border);
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: var(--spacing-xs) 0;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+                text-align: center;
+            }
+            
+            .community-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 1.25rem;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>NurOS</h1>
-        <p>Современный независимый GNU/Linux дистрибутив</p>
-        <nav>
-            <a href="#about">О системе</a>
-            <a href="#tulpar">Tulpar</a>
-            <a href="#components">Компоненты</a>
-            <a href="#team">Команда</a>
-            <a href="#contact">Контакты</a>
-        </nav>
+        <div class="container">
+            <div class="logo">
+                <h1>NurOS</h1>
+                <p class="tagline">Juldyz</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#about">О проекте</a></li>
+                    <li><a href="#features">Возможности</a></li>
+                    <li><a href="#download">Скачать</a></li>
+                    <li><a href="#team">Команда</a></li>
+                    <li><a href="#community">Сообщество</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </header>
 
-    <main class="content">
-        <section id="about" class="info">
-            <h2>О системе</h2>
-            <p>NurOS — это инновационный независимый GNU/Linux дистрибутив, созданный с нуля для обеспечения максимальной производительности и безопасности.</p>
-            
-            <h3>Основные задачи:</h3>
-            <ul>
-                <li>Информирование пользователей о дистрибутиве и его компонентах</li>
-                <li>Предоставление доступа к документам, пакетам и поддержке</li>
-                <li>Связь с разработчиками через Telegram-каналы</li>
-                <li>Безопасное скачивание дистрибутива через Telegram</li>
-            </ul>
-            <a href="https://t.me/nuros_ru" class="button">Скачать NurOS</a>   <a href="./docs" class="button" id="docs">Документация</a>
-        </section>
-
-        <section id="tulpar" class="info">
-            <h2>Tulpar - Менеджер пакетов</h2>
-            <div class="component-details">
-                <h3>Основные возможности:</h3>
-                <ul>
-                    <li>Быстрая установка и обновление пакетов</li>
-                    <li>Интеграция с APG форматом</li>
-                    <li>Автоматическое разрешение зависимостей</li>
-                    <li>Система контроля версий пакетов</li>
-                </ul>
-                <p class="meta">Maintainer: GoldenVadim</p>
-            </div>
-        </section>
-
-        <section id="apg" class="info">
-            <h2>APG - Формат пакетов</h2>
-            <div class="component-details">
-                <h3>Характеристики:</h3>
-                <ul>
-                    <li>Современный формат упаковки</li>
-                    <li>Оптимизированная структура метаданных</li>
-                    <li>Встроенная система верификации</li>
-                    <li>Поддержка скриптов пре/пост установки</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="components" class="info">
-            <h2>Основные компоненты</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>UPKGT</h3>
-                    <p>Инструмент для улучшения пользовательского опыта и управления пакетами.</p>
-                </div>
-                <div class="card">
-                    <h3>apgbuild</h3>
-                    <p>Компонент сборки пакетов .apg.</p>
-                </div>
-                <div class="card">
-                    <h3>Tulpar</h3>
-                    <p>Пакетный менеджер.</p>
-                </div>
-                <div class="card">
-                    <h3>Delta Apps</h3>
-                    <p>Приложения для NurOS.</p>
-                </div>
-                <div class="card">
-                    <h3>NeoInit</h3>
-                    <p>Современная система инициализации, основанная на OpenRC.</p>
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>NurOS "Juldyz"</h2>
+                <p>Независимый Linux дистрибутив</p>
+                <div class="cta-buttons">
+                    <a href="#download" class="btn">Скачать</a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="history" class="info">
-            <h2>История проекта</h2>
-            <ul>
-                <li>Ноябрь 2023 — Начало изучения Linux</li>
-                <li>31 декабря 2023 — Создание первого сайта проекта</li>
-                <li>1 мая 2024 — Начало разработки под названием OrangeOS</li>
-                <li>Сентябрь 2024 — Знакомство с GoldenVadim и изучение LFS</li>
-                <li>Переименование проекта в NurOS</li>
-                <li>Весна 2025 — Новый состав разработчиков</li>
-            </ul>
-        </section>
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">О проекте</h2>
+            <div class="about-content">
+                <p>NurOS — независимый Linux дистрибутив, разработанный в Казахстане. Создан для обеспечения высокой скорости, безопасности и доступности. Наша цель — создать открытую и мощную операционную систему для разработчиков и обычных пользователей.</p>
+                <p>Название "Juldyz" (Звезда на казахском) символизирует наш яркий путь к новым высотам в экосистеме Linux.</p>
+            </div>
+        </div>
+    </section>
 
-        <section id="team" class="info">
-            <h2>Команда разработки</h2>
-            <div class="grid">
-                <div class="card">
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Возможности</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Независимость</h3>
+                    <p>Не основан на других дистрибутивах, обеспечивая полный контроль над системой.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Безопасность</h3>
+                    <p>Встроенный брандмауэр и инструменты для конфиденциальности с регулярными обновлениями безопасности.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Скорость</h3>
+                    <p>Оптимизирован для быстродействия и эффективности на любом оборудовании.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Формат APG</h3>
+                    <p>Собственный формат пакетов с быстрой установкой и полной поддержкой зависимостей.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Современность</h3>
+                    <p>Чистый интерфейс с интуитивно понятными инструментами настройки системы.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Сообщество</h3>
+                    <p>Активная поддержка через форумы и социальные сети.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="requirements" class="requirements">
+        <div class="container">
+            <h2 class="section-title">Системные требования</h2>
+            <div class="requirements-content">
+                <p><strong>Процессор:</strong> x86_64 или AArch64</p>
+                <p><strong>Оперативная память:</strong> ≥2ГБ (рекомендуется 4ГБ)</p>
+                <p><strong>Дисковое пространство:</strong> ≥15ГБ свободного места</p>
+                <p><strong>Графика:</strong> Интегрированная графика (рекомендуется дискретная видеокарта)</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="download">
+        <div class="container">
+            <h2 class="section-title">Скачать</h2>
+            <div class="download-options">
+                <a href="https://t.me/nuros_ru/754" class="btn">Скачать NurOS</a>
+                <p class="download-note">Примечание: rootfs необходимо монтировать самостоятельно</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="team">
+        <div class="container">
+            <h2 class="section-title">Команда</h2>
+            <div class="team-grid">
+                <div class="team-member">
                     <h3>AnmiTaliDev</h3>
-                    <p>Основатель проекта, тимлид</p>
+                    <p class="role">Основатель, тимлид</p>
                 </div>
-                <div class="card">
+                <div class="team-member">
                     <h3>Ruzen</h3>
-                    <p>C#; C++; Haskell; Python, Разработчик установщика</p>
+                    <p class="role">Разработчик установщика и Tulpar</p>
+                    <p class="skills">C#, C++, Haskell, Python</p>
                 </div>
-                <div class="card">
+                <div class="team-member">
                     <h3>Meigoc</h3>
-                    <p>Java; Python; C++ Разработчик, Maintainer проекта Tulpar-server</p>
+                    <p class="role">Разработчик, Maintainer проекта Tulpar-server</p>
+                    <p class="skills">Java, Python, C++</p>
                 </div>
-                <div class="card">
+                <div class="team-member">
                     <h3>chelik002</h3>
-                    <p>Python Разработчик, Дизайнер</p>
+                    <p class="role">Разработчик, Дизайнер</p>
+                    <p class="skills">Python</p>
                 </div>
-                <div class="card">
+                <div class="team-member">
                     <h3>CosmoBlade</h3>
-                    <p>C++; Python; Go; JS; C Разаботчик, Дизайнер</p>
+                    <p class="role">Разработчик, Дизайнер</p>
+                    <p class="skills">C++, Python, Go, JS, C</p>
                 </div>
-                <div class="card">
+                <div class="team-member">
                     <h3>Isnt</h3>
-                    <p>Zig; Rust; FASM Разработчик, Разработчик NeoInit</p>
+                    <p class="role">Разработчик, Разработчик NeoInit</p>
+                    <p class="skills">Zig, Rust, C</p>
                 </div>
-                <div class="card">
+                <div class="team-member">
                     <h3>TheMomer</h3>
-                    <p>Python; Go Разработчик, Дизайнер обоев</p>
+                    <p class="role">Разработчик, Дизайнер обоев</p>
+                    <p class="skills">Python, Go, Lua</p>
                 </div>
-                <div class="card">
+                <div class="team-member">
                     <h3>Space</h3>
-                    <p>Python; C# Рвзработчик, Разработчик Delta Apps</p>
+                    <p class="role">Разработчик, Разработчик Aether Apps</p>
+                    <p class="skills">Python, C#</p>
                 </div>
-                 <div class="card">
+                <div class="team-member">
                     <h3>Rav1non</h3>
-                    <p>Python; Java Разработчик, Сборка пакетов</p>
+                    <p class="role">Разработчик, Сборка пакетов</p>
+                    <p class="skills">Python, Java</p>
+                </div>
+                <div class="team-member">
+                    <h3>GeniyGeniyvich</h3>
+                    <p class="role">Frontend разработчик, Разработчик форума</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="contact" class="info">
-            <h2>Связь с нами</h2>
-            <p>Наши Telegram-каналы:</p>
-            <div class="grid">
-                <div class="card">
-                    <h3>Русскоязычный канал</h3>
-                    <p><a href="https://t.me/nuros_ru">@nuros_ru</a></p>
-                </div>
-                <div class="card">
-                    <h3>Казахский канал</h3>
-                    <p><a href="https://t.me/nuros_kz">@nuros_kz</a></p>
-                </div>
-                <div class="card">
-                    <h3>Основной канал</h3>
-                    <p><a href="https://t.me/nuros_tg">@nuros_tg</a></p>
+    <section id="community" class="community">
+        <div class="container">
+            <h2 class="section-title">Сообщество</h2>
+            <div class="community-content">
+                <p>Присоединяйтесь к нашему сообществу разработчиков и пользователей.</p>
+                <div class="community-links">
+                    <a href="https://github.com/nuros-linux" class="btn">GitHub</a>
+                    <a href="https://nuros.flarum.cloud/" class="btn">Форум</a>
+                    <a href="https://t.me/nurosru_chat" class="btn">Чат</a>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <footer>
-        <p>© 2025 NurOS. Создано с любовью командой NurOS</p>
+        <div class="container">
+            <div class="footer-content">
+                <p>NurOS © 2025. Лицензия GNU GPL v3.</p>
+                <p><a href="https://nuros.org">nuros.org</a></p>
+            </div>
+        </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('nav');
+            
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('active');
+            });
+
+            // Smooth scrolling for navigation links
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    
+                    if (targetId.startsWith('#')) {
+                        e.preventDefault();
+                        
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            const headerHeight = document.querySelector('header').offsetHeight;
+                            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                            
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Close mobile menu if open
+                            if (nav.classList.contains('active')) {
+                                nav.classList.remove('active');
+                            }
+                        }
+                    }
+                });
+            });
+
+            // Add active class to current section in navigation
+            function highlightNav() {
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('nav a');
+                
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                        current = '#' + section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightNav);
+        });
+    </script>
 </body>
 </html>
