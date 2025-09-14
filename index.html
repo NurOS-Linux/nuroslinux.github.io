@@ -407,6 +407,56 @@
                 grid-template-columns: 1fr;
             }
         }
+        /* Контактная секция */
+#contact {
+    background: var(--bg-dark); /* общий тёмный фон */
+    padding: 60px 20px;
+    text-align: center;
+    border-top: 2px solid var(--primary); /* синий акцент сверху */
+}
+
+#contact .container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#contact .section-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* градиентный текст */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#contact .contact-content p {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: var(--text-secondary); /* мягкий серый текст */
+}
+
+/* Кнопка */
+#contact .btn {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+#contact .btn:hover {
+    background: var(--secondary);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
     </style>
 </head>
 <body>
@@ -588,6 +638,14 @@
                 </div>
             </div>
         </div>
+    </section>
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Стань нашим разработчиком!</h2>
+            <div class="contact-content">
+                <p>Свяжитесь с нами для того чтобы стать нашим разработчиком.</p>
+                <p>Заполнить анкету: <a href="https://become.nuros.org/" class="btn">Анкета</a></p>
+
     </section>
 
     <footer>
