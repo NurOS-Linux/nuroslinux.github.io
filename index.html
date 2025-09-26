@@ -1,1 +1,727 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="/favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="Web site created using create-react-app"/><link rel="apple-touch-icon" href="/logo192.png"/><link rel="manifest" href="/manifest.json"/><title>React App</title><script defer="defer" src="/static/js/main.0730e10f.js"></script><link href="/static/css/main.13317ffc.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div></body></html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" type="image/png" href="assets/favicon-dark.png">
+    <title>NurOS - Независимый Linux дистрибутив</title>
+    <style>
+        /* Base Styles - Modified New Minimalist with Dark Theme */
+        :root {
+            --primary-color: #1a5b9c;
+            --primary-hover: #0f4788;
+            --secondary-color: #121212;
+            --accent-color: #8ab4e8;
+            --text-color: #e0e0e0;
+            --text-dark: #1a1a1a;
+            --background: #1a1a1a;
+            --foreground: #262626;
+            --border: 1px solid #333;
+            --border-radius: 8px;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 8rem;
+            --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background);
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent-color);
+            transition: opacity 0.3s ease;
+        }
+
+        a:hover {
+            opacity: 0.9;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+            color: var(--text-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border: none;
+            border-radius: var(--border-radius);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            color: white;
+        }
+
+        .btn-alt {
+            background-color: transparent;
+            color: var(--text-color);
+            border: var(--border);
+        }
+
+        .btn-alt:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-color);
+        }
+
+        /* Header */
+        header {
+            padding: var(--spacing-md) 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--foreground);
+            z-index: 1000;
+            border-bottom: var(--border);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .tagline {
+            font-size: 0.875rem;
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: var(--spacing-md);
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background-color: var(--text-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background-color: var(--secondary-color);
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/random/1920x1080/?galaxy,stars');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-color);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--accent-color);
+        }
+
+        .cta-buttons {
+            margin-top: var(--spacing-md);
+        }
+
+        /* About Section */
+        .about {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--background);
+        }
+
+        .about-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .about-content p {
+            margin-bottom: var(--spacing-md);
+            font-size: 1.1rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--secondary-color);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .feature-card {
+            background-color: var(--foreground);
+            padding: var(--spacing-md);
+            border: var(--border);
+            border-radius: var(--border-radius);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card h3 {
+            margin-bottom: var(--spacing-sm);
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        /* Requirements Section */
+        .requirements {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--background);
+        }
+
+        .requirements-content {
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 2;
+        }
+
+        /* Download Section */
+        .download {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--secondary-color);
+        }
+
+        .download-options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .download-note {
+            margin-top: var(--spacing-xs);
+            color: var(--accent-color);
+            text-align: center;
+            max-width: 500px;
+        }
+
+        /* Team Section */
+        .team {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--background);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .team-member {
+            padding: var(--spacing-md);
+            border: var(--border);
+            border-radius: var(--border-radius);
+            background-color: var(--foreground);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-member h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+            color: var(--accent-color);
+        }
+
+        .team-member .role {
+            font-weight: 500;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .team-member .skills {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            opacity: 0.8;
+        }
+
+        /* Community Section */
+        .community {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--secondary-color);
+        }
+
+        .community-content {
+            text-align: center;
+        }
+
+        .community-content p {
+            margin-bottom: var(--spacing-md);
+            font-size: 1.1rem;
+        }
+
+        .community-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+        }
+
+        /* Footer */
+        footer {
+            padding: var(--spacing-lg) 0;
+            border-top: var(--border);
+            background-color: var(--foreground);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-content p {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            opacity: 0.8;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--foreground);
+                display: none;
+                padding: var(--spacing-md);
+                border-bottom: var(--border);
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: var(--spacing-xs) 0;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+                text-align: center;
+            }
+            
+            .community-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 1.25rem;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* Контактная секция */
+#contact {
+    background: var(--bg-dark); /* общий тёмный фон */
+    padding: 60px 20px;
+    text-align: center;
+    border-top: 2px solid var(--primary); /* синий акцент сверху */
+}
+
+#contact .container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#contact .section-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* градиентный текст */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#contact .contact-content p {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: var(--text-secondary); /* мягкий серый текст */
+}
+
+/* Кнопка */
+#contact .btn {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+#contact .btn:hover {
+    background: var(--secondary);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>NurOS</h1>
+                <p class="tagline">Juldyz</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#about">О проекте</a></li>
+                    <li><a href="#features">Возможности</a></li>
+                    <li><a href="#download">Скачать</a></li>
+                    <li><a href="#team">Команда</a></li>
+                    <li><a href="#community">Сообщество</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>NurOS "Juldyz"</h2>
+                <p>Независимый Linux дистрибутив</p>
+                <div class="cta-buttons">
+                    <a href="#download" class="btn">Скачать</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">О проекте</h2>
+            <div class="about-content">
+                <p>NurOS — независимый Linux дистрибутив, разработанный в Казахстане. Создан для обеспечения высокой скорости, безопасности и доступности. Наша цель — создать открытую и мощную операционную систему для разработчиков и обычных пользователей.</p>
+                <p>Название "Juldyz" (Звезда на казахском) символизирует наш яркий путь к новым высотам в экосистеме Linux.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Возможности</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Независимость</h3>
+                    <p>Не основан на других дистрибутивах, обеспечивая полный контроль над системой.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Безопасность</h3>
+                    <p>Встроенный брандмауэр и инструменты для конфиденциальности с регулярными обновлениями безопасности.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Скорость</h3>
+                    <p>Оптимизирован для быстродействия и эффективности на любом оборудовании.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Формат APG</h3>
+                    <p>Собственный формат пакетов с быстрой установкой и полной поддержкой зависимостей.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Современность</h3>
+                    <p>Чистый интерфейс с интуитивно понятными инструментами настройки системы.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Сообщество</h3>
+                    <p>Активная поддержка через форумы и социальные сети.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="requirements" class="requirements">
+        <div class="container">
+            <h2 class="section-title">Системные требования</h2>
+            <div class="requirements-content">
+                <p><strong>Процессор:</strong> x86_64 или AArch64</p>
+                <p><strong>Оперативная память:</strong> ≥2ГБ (рекомендуется 4ГБ)</p>
+                <p><strong>Дисковое пространство:</strong> ≥15ГБ свободного места</p>
+                <p><strong>Графика:</strong> Интегрированная графика (рекомендуется дискретная видеокарта)</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="download">
+        <div class="container">
+            <h2 class="section-title">Скачать</h2>
+            <div class="download-options">
+                <a href="https://t.me/nuros_ru/754" class="btn">Скачать NurOS</a>
+                <p class="download-note">Примечание: rootfs необходимо монтировать самостоятельно</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="team">
+        <div class="container">
+            <h2 class="section-title">Команда</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <h3>AnmiTaliDev</h3>
+                    <p class="role">Основатель, тимлид</p>
+                </div>
+                <div class="team-member">
+                    <h3>Ruzen</h3>
+                    <p class="role">Разработчик установщика и Tulpar</p>
+                    <p class="skills">C#, C++, Haskell, Python</p>
+                </div>
+                <div class="team-member">
+                    <h3>Meigoc</h3>
+                    <p class="role">Разработчик, Maintainer проекта Tulpar-server</p>
+                    <p class="skills">Java, Python, C++</p>
+                </div>
+                <div class="team-member">
+                    <h3>chelik002</h3>
+                    <p class="role">Разработчик, Дизайнер</p>
+                    <p class="skills">Python</p>
+                </div>
+                <div class="team-member">
+                    <h3>CosmoBlade</h3>
+                    <p class="role">Разработчик, Дизайнер</p>
+                    <p class="skills">C++, Python, Go, JS, C</p>
+                </div>
+                <div class="team-member">
+                    <h3>Isnt</h3>
+                    <p class="role">Разработчик, Разработчик NeoInit</p>
+                    <p class="skills">Zig, Rust, C</p>
+                </div>
+                <div class="team-member">
+                    <h3>TheMomer</h3>
+                    <p class="role">Разработчик, Дизайнер обоев</p>
+                    <p class="skills">Python, Go, Lua</p>
+                </div>
+                <div class="team-member">
+                    <h3>Space</h3>
+                    <p class="role">Разработчик, Разработчик Aether Apps</p>
+                    <p class="skills">Python, C#</p>
+                </div>
+                <div class="team-member">
+                    <h3>Rav1non</h3>
+                    <p class="role">Разработчик, Сборка пакетов</p>
+                    <p class="skills">Python, Java</p>
+                </div>
+                <div class="team-member">
+                    <h3>geniy_geniyvich</h3>
+                    <p class="role">Frontend разработчик, Разработчик форума</p>
+                    <p class="skills">HTML, JS, CSS</p>
+                </div>
+                <div class="team-member">
+                    <h3>got/gotrt</h3>
+                    <p class="role">Сетевое программирование, devops и langdev</p>
+                    <p class="skills">Go, OCaml, C</p>
+                </div>
+                <div class="team-member">
+                    <h3>girisato</h3>
+                    <p class="role">Дизайнер</p>
+                    <p class="skills"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="community" class="community">
+        <div class="container">
+            <h2 class="section-title">Сообщество</h2>
+            <div class="community-content">
+                <p>Присоединяйтесь к нашему сообществу разработчиков и пользователей.</p>
+                <div class="community-links">
+                    <a href="https://github.com/nuros-linux" class="btn">GitHub</a>
+                    <a href="https://forum.nuros.org/" class="btn">Форум</a>
+                    <a href="https://t.me/nurosru_chat" class="btn">Чат</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Стань нашим разработчиком!</h2>
+            <div class="contact-content">
+                <p>Свяжитесь с нами для того чтобы стать нашим разработчиком.</p>
+                <p>Заполнить анкету: <a href="https://become.nuros.org/" class="btn">Анкета</a></p>
+
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>NurOS © 2025. Лицензия GNU GPL v3.</p>
+                <p><a href="https://nuros.org">nuros.org</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('nav');
+            
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('active');
+            });
+
+            // Smooth scrolling for navigation links
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    
+                    if (targetId.startsWith('#')) {
+                        e.preventDefault();
+                        
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            const headerHeight = document.querySelector('header').offsetHeight;
+                            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                            
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Close mobile menu if open
+                            if (nav.classList.contains('active')) {
+                                nav.classList.remove('active');
+                            }
+                        }
+                    }
+                });
+            });
+
+            // Add active class to current section in navigation
+            function highlightNav() {
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('nav a');
+                
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                        current = '#' + section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightNav);
+        });
+    </script>
+</body>
+</html>
