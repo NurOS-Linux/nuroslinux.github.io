@@ -72,17 +72,18 @@ const NurOS = () => {
     };
 
     const teamMembers = [
-        { name: "AnmiTaliDev", role: "Основатель, тимлид", skills: "" },
-        { name: "Ruzen", role: "Разработчик установщика и Tulpar", skills: "C#, C++, Haskell, Python" },
+        { name: "AnmiTaliDev", role: "Основатель, тимлид", skills: "Деградация" },
+        { name: "Ruzen", role: "Разработчик, Maintainer установщика и Tulpar", skills: "C#, C++, Haskell, Python" },
         { name: "Meigoc", role: "Разработчик, Maintainer проекта Tulpar-server", skills: "Java, Python, C++" },
         { name: "chelik002", role: "Разработчик, Дизайнер", skills: "Python" },
         { name: "CosmoBlade", role: "Разработчик, Дизайнер", skills: "C++, Python, Go, JS, C" },
-        { name: "Isnt", role: "Разработчик, Разработчик NeoInit", skills: "Zig, Rust, C" },
+        { name: "Isnt", role: "Разработчик, Разработчик Tulpar и LibAPG", skills: "Zig, Rust, C" },
         { name: "TheMomer", role: "Разработчик, Дизайнер обоев", skills: "Python, Go, Lua" },
         { name: "Space", role: "Разработчик, Разработчик Aether Apps", skills: "Python, C#" },
         { name: "Rav1non", role: "Разработчик, Сборка пакетов", skills: "Python, Java" },
-        { name: "got/gotrt", role: "Сетевое программирование, devops и langdev", skills: "Go, OCaml, C" },
-        { name: "girisato", role: "Дизайнер", skills: "" }
+        { name: "got/gotrt", role: "Разработчик", skills: "Go, OCaml, C" },
+        { name: "girisato", role: "Дизайнер, Разработчик", skills: "Vala, C, Lua, Python" },
+        { name: "XCubicArnament", role: "Разработчик", skills: "C, C++, Python, JS" }
     ];
 
     const features = [
@@ -233,5 +234,6 @@ const NurOS = () => {
         </div>
     );
 };
+
 
 export default NurOS;
