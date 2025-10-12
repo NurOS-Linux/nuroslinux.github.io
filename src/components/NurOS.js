@@ -72,11 +72,11 @@ const NurOS = () => {
     };
 
     const teamMembers = [
-        { name: "AnmiTaliDev", role: "Основатель, тимлид", skills: "Деградация" },
+        { name: "CosmoBlade", role: "Тимлид, Разработчик, Дизайнер", skills: "C++, Python, Go, JS, C" },
+        //{ name: "AnmiTaliDev", role: "Основатель, тимлид", skills: "Деградация" },
         { name: "Ruzen", role: "Разработчик, Maintainer установщика и Tulpar", skills: "C#, C++, Haskell, Python" },
         { name: "Meigoc", role: "Разработчик, Maintainer проекта Tulpar-server", skills: "Java, Python, C++" },
         { name: "chelik002", role: "Разработчик, Дизайнер", skills: "Python" },
-        { name: "CosmoBlade", role: "Разработчик, Дизайнер", skills: "C++, Python, Go, JS, C" },
         { name: "Isnt", role: "Разработчик, Разработчик Tulpar и LibAPG", skills: "Zig, Rust, C" },
         { name: "TheMomer", role: "Разработчик, Дизайнер обоев", skills: "Python, Go, Lua" },
         { name: "Space", role: "Разработчик, Разработчик Aether Apps", skills: "Python, C#" },
@@ -238,4 +238,5 @@ const NurOS = () => {
 
 
 export default NurOS;
+
 
