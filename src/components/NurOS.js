@@ -207,8 +207,8 @@ const NurOS = () => {
                         <p>Присоединяйтесь к нашему сообществу разработчиков и пользователей.</p>
                         <div className="community-links">
                             <a href="https://github.com/nuros-linux" className="btn">GitHub</a>
-                            <a href="https://forum.nuros.org/" className="btn">Форум</a>
-                            <a href="https://t.me/nurosru_chat" className="btn">Чат</a>
+                            //<a href="https://forum.nuros.org/" className="btn">Форум</a>
+                            <a href="https://t.me/nuros_chat" className="btn">Чат</a>
                         </div>
                     </div>
                 </div>
@@ -219,7 +219,7 @@ const NurOS = () => {
                     <h2 className="section-title">Стань нашим разработчиком!</h2>
                     <div className="contact-content">
                         <p>Свяжитесь с нами для того чтобы стать нашим разработчиком.</p>
-                        <p>Заполнить анкету: <a href="https://become.nuros.org/" className="btn">Анкета</a></p>
+                        <p>Заполнить анкету: <a href="https://tally.so/r/mB6774" className="btn">Анкета</a></p>
                     </div>
                 </div>
             </section>
@@ -238,6 +238,7 @@ const NurOS = () => {
 
 
 export default NurOS;
+
 
 
 
