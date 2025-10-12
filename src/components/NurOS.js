@@ -179,7 +179,7 @@ const NurOS = () => {
                 <div className="container">
                     <h2 className="section-title">Скачать</h2>
                     <div className="download-options">
-                        <a href="https://t.me/nuros_ru/754" className="btn">Скачать NurOS</a>
+                        <a href="https://t.me/nuros_tg/754" className="btn">Скачать NurOS</a>
                         <p className="download-note">Примечание: rootfs необходимо монтировать самостоятельно</p>
                     </div>
                 </div>
@@ -238,5 +238,6 @@ const NurOS = () => {
 
 
 export default NurOS;
+
 
 
