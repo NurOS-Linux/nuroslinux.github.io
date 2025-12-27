@@ -1,12 +1,12 @@
-import React from 'react';
+import type { FC } from 'react';
 import NurOS from './components/NurOS';
 
-function App() {
+const App: FC = () => {
   return (
     <div className="App">
       <NurOS />
     </div>
   );
-}
+};
 
 export default App;
