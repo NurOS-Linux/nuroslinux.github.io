@@ -228,8 +228,7 @@ const NurOS: FC = () => {
                 <div className="container">
                     <h2 className="section-title">Стань нашим разработчиком!</h2>
                     <div className="contact-content">
-                        <p>Свяжитесь с нами для того чтобы стать нашим разработчиком.</p>
-                        <p>Заполнить анкету: <a href="https://tally.so/r/mB6774" className="btn">Анкета</a></p>
+                        <a href="https://become.nuros.org" className="btn">Вакансии и анкета</a>
                     </div>
                 </div>
             </section>
