@@ -88,7 +88,7 @@ const NurOS: FC = () => {
         { name: "Ruzen", role: "Разработчик, Maintainer установщика и Tulpar", skills: "C#, C++, Haskell, Python" },
         { name: "Meigoc", role: "Разработчик, Maintainer проекта Tulpar-server", skills: "Java, Python, C++" },
         { name: "chelik002", role: "Разработчик, Дизайнер", skills: "Python" },
-        { name: "Timohych", role: "Переводчик", skills: "Rust, C, Java" },
+        { name: "Timohych", role: "Переводчик, Саунддизайнер", skills: "Rust, C, Java" },
         { name: "TheMomer", role: "Разработчик, Дизайнер обоев", skills: "Python, Go, Lua" },
         { name: "Space", role: "Разработчик, Разработчик Aether Apps", skills: "Python, C#" },
         { name: "Rav1non", role: "Разработчик, Сборка пакетов", skills: "Python, Java" },
@@ -236,7 +236,7 @@ const NurOS: FC = () => {
             <footer>
                 <div className="container">
                     <div className="footer-content">
-                        <p>NurOS © 2025. Лицензия GNU AGPL v3.</p>
+                        <p>NurOS © 2026. Лицензия GNU AGPL v3.</p>
                         <p><a href="https://nuros.org">nuros.org</a></p>
                     </div>
                 </div>
