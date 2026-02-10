@@ -88,7 +88,6 @@ const NurOS: FC = () => {
         { name: "Ruzen", role: "Разработчик, Maintainer установщика и Tulpar", skills: "C#, C++, Haskell, Python" },
         { name: "Meigoc", role: "Разработчик, Maintainer проекта Tulpar-server", skills: "Java, Python, C++" },
         { name: "chelik002", role: "Разработчик, Дизайнер", skills: "Python" },
-        { name: "Timohych", role: "Переводчик, Саунд-дизайнер", skills: "Rust, C, Java" },
         { name: "m1lkydev", role: "Разработчик, Дизайнер обоев", skills: "Python, Go, Lua" },
         { name: "Space", role: "Разработчик, Разработчик Aether Apps", skills: "Python, C#" },
         { name: "Rav1non", role: "Разработчик, Сборка пакетов", skills: "Python, Java" },
