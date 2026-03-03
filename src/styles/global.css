@@ -1,13 +1,13 @@
 :root {
   --primary-color: #1a5b9c;
   --primary-hover: #1568b3;
-  --secondary-color: #1e1e1e;
+  --secondary-color: #0f0f0f;
   --accent-color: #8ab4e8;
   --text-color: #e0e0e0;
   --text-muted: rgba(224,224,224,0.55);
-  --background: #181818;
-  --foreground: #232323;
-  --border: 1px solid rgba(255,255,255,0.08);
+  --background: #0d0d0d;
+  --foreground: #111111;
+  --border: 1px solid rgba(255,255,255,0.06);
   --border-radius: 10px;
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
