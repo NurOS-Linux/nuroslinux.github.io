@@ -1,1 +1,0 @@
-import"./hoisted.CRzPjfg7.js";const n=document.querySelector(".hero");n?.addEventListener("mousemove",e=>{n.style.backgroundPosition=`${e.clientX/window.innerWidth*100}% ${e.clientY/window.innerHeight*100}%`});
