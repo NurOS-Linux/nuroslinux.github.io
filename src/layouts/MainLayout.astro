@@ -1,0 +1,30 @@
+---
+import '../styles/global.css';
+import { getLangFromUrl } from '../i18n/ui';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'NurOS',
+  description = 'Independent Linux Distribution',
+} = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

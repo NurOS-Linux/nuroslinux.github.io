@@ -1,0 +1,186 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { useTranslations, getLangFromUrl, downloadEditions, type Lang } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+---
+
+<MainLayout title={`${t('download.title')} — NurOS`} description={t('download.subtitle')}>
+  <div class="nuros-app">
+    <Header />
+    <main class="dl-page">
+      <div class="container">
+
+        <div class="dl-header">
+          <span class="rolling-badge">{t('download.rolling')}</span>
+          <h1 class="dl-title">{t('download.title')}</h1>
+          <p class="dl-sub">{t('download.subtitle')}</p>
+        </div>
+
+        {downloadEditions.map((edition) => (
+          <section class="edition">
+            <div class="edition-head">
+              <div class="edition-name-row">
+                <h2 class="edition-name">{edition.id === 'juldyz' ? 'Juldyz' : 'Josh'}</h2>
+                <span class={`edition-badge ${edition.id}`}>
+                  {t(edition.id === 'juldyz' ? 'download.juldyz.label' : 'download.josh.label')}
+                </span>
+              </div>
+              <p class="edition-desc">
+                {t(edition.id === 'juldyz' ? 'download.juldyz.desc' : 'download.josh.desc')}
+              </p>
+            </div>
+
+            <div class="arch-grid">
+              {edition.arches.map((arch) => (
+                <div class="arch-card">
+                  <span class="arch-name">{arch.name}</span>
+                  {arch.link ? (
+                    <a href={arch.link} class="arch-btn arch-btn--get" target="_blank" rel="noopener">
+                      {t('download.get')}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    </a>
+                  ) : (
+                    <span class="arch-btn arch-btn--soon">{t('download.soon')}</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
+        ))}
+
+        <p class="dl-note">{t('download.note')}</p>
+
+      </div>
+    </main>
+    <Footer />
+  </div>
+</MainLayout>
+
+<style>
+  .nuros-app { min-height: 100vh; display: flex; flex-direction: column; }
+  .dl-page { flex: 1; padding: var(--spacing-xl) 0; }
+
+  .dl-header { text-align: center; margin-bottom: var(--spacing-lg); }
+
+  .rolling-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid rgba(138,180,232,0.35);
+    color: var(--accent-color);
+    margin-bottom: 0.75rem;
+  }
+
+  .dl-title {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+  }
+
+  .dl-sub { font-size: 1.05rem; color: var(--text-muted); }
+
+  .edition { margin-bottom: var(--spacing-lg); }
+  .edition-head { margin-bottom: var(--spacing-md); }
+
+  .edition-name-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .edition-name { font-size: 1.5rem; font-weight: 700; color: var(--text-color); }
+
+  .edition-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.65rem;
+    border-radius: 999px;
+  }
+  .edition-badge.juldyz {
+    background: rgba(26,91,156,0.3);
+    border: 1px solid rgba(138,180,232,0.35);
+    color: var(--accent-color);
+  }
+  .edition-badge.josh {
+    background: rgba(80,50,120,0.3);
+    border: 1px solid rgba(180,140,220,0.35);
+    color: #c4a8e8;
+  }
+
+  .edition-desc { font-size: 0.95rem; color: var(--text-muted); max-width: 540px; line-height: 1.6; }
+
+  .arch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .arch-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.9rem 1rem;
+    background: var(--foreground);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    transition: border-color .2s;
+  }
+  .arch-card:hover { border-color: rgba(138,180,232,0.3); }
+
+  .arch-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'SF Mono', 'Fira Mono', monospace;
+  }
+
+  .arch-btn {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.3rem 0.75rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    transition: background .2s, transform .2s;
+  }
+  .arch-btn--get { background: var(--primary-color); color: #fff; }
+  .arch-btn--get:hover { background: var(--primary-hover); transform: translateY(-1px); opacity: 1; color: #fff; }
+  .arch-btn--soon {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--text-muted);
+    cursor: default;
+    font-size: 0.75rem;
+  }
+
+  .dl-note {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: var(--border);
+  }
+
+  @media (max-width: 480px) { .arch-grid { grid-template-columns: 1fr; } }
+</style>

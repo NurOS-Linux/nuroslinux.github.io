@@ -1,0 +1,147 @@
+---
+import { useTranslations, getLangFromUrl, getAlternateUrl, type Lang } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+const path = Astro.url.pathname;
+const isHome = path === '/' || path === '/ru' || path === '/ru/';
+
+const navHref = (anchor: string) => {
+  const base = lang === 'ru' ? '/ru' : '';
+  return isHome ? anchor : `${base}/${anchor}`;
+};
+
+const altLang = lang === 'en' ? 'ru' : 'en';
+const altUrl = getAlternateUrl(path, altLang);
+---
+
+<header>
+  <div class="container">
+    <a href={lang === 'ru' ? '/ru' : '/'} class="logo-link">
+      <div class="logo">
+        <h1>NurOS</h1>
+      </div>
+    </a>
+
+    <nav id="main-nav">
+      <ul>
+        <li><a href={navHref('#home')}>{t('nav.home')}</a></li>
+        <li><a href={navHref('#about')}>{t('nav.about')}</a></li>
+        <li><a href={navHref('#features')}>{t('nav.features')}</a></li>
+        <li>
+          <a
+            href={lang === 'ru' ? '/ru/releases' : '/releases'}
+            class:list={[{ active: path.includes('/releases') }]}
+          >{t('nav.download')}</a>
+        </li>
+        <li>
+          <a
+            href={lang === 'ru' ? '/ru/team' : '/team'}
+            class:list={[{ active: path === '/team' || path === '/ru/team' }]}
+          >{t('nav.team')}</a>
+        </li>
+        <li><a href={navHref('#community')}>{t('nav.community')}</a></li>
+        <li>
+          <a
+            href={lang === 'ru' ? '/ru/blog' : '/blog'}
+            class:list={[{ active: path.includes('/blog') }]}
+          >{t('nav.blog')}</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <div class="lang-toggle">
+        <a href={getAlternateUrl(path, 'en')} class:list={[{ active: lang === 'en' }]}>EN</a>
+        <a href={getAlternateUrl(path, 'ru')} class:list={[{ active: lang === 'ru' }]}>RU</a>
+      </div>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const nav    = document.getElementById('main-nav');
+
+  toggle?.addEventListener('click', () => nav?.classList.toggle('active'));
+  nav?.querySelectorAll('a').forEach((l) => l.addEventListener('click', () => nav.classList.remove('active')));
+
+  document.querySelectorAll('nav a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.querySelector((link as HTMLAnchorElement).getAttribute('href')!);
+      if (target) {
+        const h = (document.querySelector('header') as HTMLElement).offsetHeight;
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - h, behavior: 'smooth' });
+      }
+    });
+  });
+
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach((s) => { if (window.pageYOffset >= (s as HTMLElement).offsetTop - 120) current = '#' + s.id; });
+    navLinks.forEach((l) => { l.classList.remove('active'); if (l.getAttribute('href') === current) l.classList.add('active'); });
+  });
+</script>
+
+<style>
+  header { padding: var(--spacing-md) 0; position: fixed; top:0; left:0; right:0; background-color: var(--foreground); z-index: 1000; border-bottom: var(--border); }
+  header .container { display: flex; justify-content: space-between; align-items: center; }
+
+  .logo-link { text-decoration: none; opacity: 1; }
+  .logo-link:hover { opacity: 1; }
+  .logo h1 { font-size: 1.5rem; font-weight: 600; color: var(--text-color); line-height: 1.2; }
+  .tagline { font-size: 0.875rem; color: var(--accent-color); }
+
+  nav ul { display: flex; list-style: none; margin: 0; padding: 0; }
+  nav ul li { margin-left: var(--spacing-md); }
+  nav ul li a { color: var(--text-color); font-weight: 500; transition: color .3s ease; }
+  nav ul li a:hover, nav ul li a.active { color: var(--accent-color); opacity: 1; }
+
+  .header-actions { display: flex; align-items: center; gap: var(--spacing-sm); }
+
+  .lang-toggle {
+    display: flex;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+  }
+  .lang-toggle a {
+    padding: 0.25rem 0.65rem;
+    color: rgba(224,224,224,0.4);
+    transition: color .2s, background .2s;
+  }
+  .lang-toggle a:hover:not(.active) {
+    color: var(--text-color);
+    background: rgba(255,255,255,0.06);
+    opacity: 1;
+  }
+  .lang-toggle a.active {
+    background: var(--primary-color);
+    color: var(--accent-color);
+    opacity: 1;
+  }
+  .lang-toggle a + a {
+    border-left: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .menu-toggle span { display: block; width: 24px; height: 2px; background-color: var(--text-color); }
+
+  @media (max-width: 768px) {
+    .menu-toggle { display: flex; }
+    nav { position: absolute; top: 100%; left:0; right:0; background-color: var(--foreground); display: none; padding: var(--spacing-md); border-bottom: var(--border); }
+    nav.active { display: block; }
+    nav ul { flex-direction: column; }
+    nav ul li { margin: var(--spacing-xs) 0; }
+  }
+</style>

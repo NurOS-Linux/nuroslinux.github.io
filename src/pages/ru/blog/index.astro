@@ -1,0 +1,42 @@
+---
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+import BlogCard from '../../../components/blog/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('posts-ru');
+const posts = allPosts
+  .filter((p) => p.data.publishedAt)
+  .sort((a, b) => b.data.publishedAt!.getTime() - a.data.publishedAt!.getTime());
+---
+
+<BlogLayout title="Блог — NurOS" description="Новости и статьи о NurOS">
+  <section class="blog-section">
+    <div class="container">
+      <h1 class="section-title">Блог</h1>
+      {posts.length === 0 ? (
+        <div class="empty"><p>Пока нет публикаций. Загляните позже!</p></div>
+      ) : (
+        <div class="posts-grid">
+          {posts.map((post) => (
+            <BlogCard
+              slug={post.slug}
+              title={post.data.title}
+              description={post.data.description}
+              publishedAt={post.data.publishedAt}
+              author={post.data.author}
+              tags={post.data.tags}
+              lang="ru"
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</BlogLayout>
+
+<style>
+  .blog-section { padding: var(--spacing-xl) 0; min-height: 60vh; }
+  .posts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap: var(--spacing-md); }
+  .empty { text-align: center; padding: var(--spacing-xl) 0; color: rgba(224,224,224,.5); font-size: 1.1rem; }
+  @media (max-width: 576px) { .posts-grid { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,22 @@
+---
+import { useTranslations, getLangFromUrl, type Lang } from '../i18n/ui';
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+---
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <p>{t('footer.license')}</p>
+      <p><a href="https://nuros.org" target="_blank" rel="noopener">nuros.org</a></p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer { padding: var(--spacing-md) 0; border-top: var(--border); background-color: var(--foreground); }
+  .footer-content { display: flex; justify-content: space-between; align-items: center; }
+  .footer-content p { font-size: .85rem; color: var(--text-muted); }
+  .footer-content a { color: var(--accent-color); font-size: .85rem; }
+  @media (max-width: 768px) { .footer-content { flex-direction: column; gap: 0.5rem; text-align: center; } }
+</style>

@@ -1,0 +1,23 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/Header.astro';
+import Team from '../components/Team.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<MainLayout title="Team — NurOS" description="Meet the NurOS development team and join us">
+  <div class="nuros-app">
+    <Header />
+    <main class="team-page">
+      <Team />
+      <Contact />
+    </main>
+    <Footer />
+  </div>
+</MainLayout>
+
+<style>
+  .nuros-app { min-height: 100vh; }
+  .team-page { padding-top: var(--header-height, 70px); }
+</style>

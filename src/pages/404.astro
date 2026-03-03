@@ -1,0 +1,109 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<MainLayout title="404 — NurOS" description="Page not found">
+  <div class="nuros-app">
+    <Header />
+    <main class="not-found">
+      <div class="container">
+        <div class="not-found-inner">
+          <p class="code">404</p>
+          <h1 class="title">Page not found</h1>
+          <p class="desc">
+            The page you're looking for doesn't exist or has been moved.
+          </p>
+          <div class="actions">
+            <a href="/" class="btn-home">Go home</a>
+            <a href="/blog" class="btn-blog">Blog</a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <Footer />
+  </div>
+</MainLayout>
+
+<style>
+  .nuros-app { min-height: 100vh; display: flex; flex-direction: column; }
+
+  .not-found {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-xl) 0;
+  }
+
+  .not-found-inner {
+    text-align: center;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .code {
+    font-size: clamp(6rem, 18vw, 10rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 0.25rem;
+    user-select: none;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-home {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.65rem 1.4rem;
+    background: var(--primary-color);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: var(--border-radius);
+    transition: background .2s, transform .2s;
+  }
+  .btn-home:hover { background: var(--primary-hover); transform: translateY(-2px); opacity: 1; color: #fff; }
+
+  .btn-blog {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.65rem 1.4rem;
+    border: 1px solid rgba(138,180,232,0.35);
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: var(--border-radius);
+    transition: background .2s, border-color .2s, transform .2s;
+  }
+  .btn-blog:hover {
+    background: rgba(138,180,232,0.08);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    opacity: 1;
+  }
+</style>

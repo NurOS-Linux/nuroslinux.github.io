@@ -1,0 +1,28 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import About from '../../components/About.astro';
+import Features from '../../components/Features.astro';
+import Requirements from '../../components/Requirements.astro';
+import Community from '../../components/Community.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<MainLayout title="NurOS" description="Независимый Linux дистрибутив">
+  <div class="nuros-app">
+    <Header />
+    <main>
+      <Hero />
+      <About />
+      <Features />
+      <Requirements />
+      <Community />
+    </main>
+    <Footer />
+  </div>
+</MainLayout>
+
+<style>
+  .nuros-app { min-height: 100vh; }
+</style>

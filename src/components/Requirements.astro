@@ -1,0 +1,34 @@
+---
+import { useTranslations, getLangFromUrl, type Lang } from '../i18n/ui';
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+
+const requirements = [
+  { label: t('req.cpu'),  value: t('req.cpu.val')  },
+  { label: t('req.ram'),  value: t('req.ram.val')  },
+  { label: t('req.disk'), value: t('req.disk.val') },
+];
+---
+
+<section id="requirements" class="requirements">
+  <div class="container">
+    <h2 class="section-title">{t('req.title')}</h2>
+    <div class="requirements-content">
+      {requirements.map((r) => (
+        <div class="requirement-item">
+          <strong>{r.label}:</strong>
+          <span>{r.value}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .requirements { padding: var(--spacing-xl) 0; background-color: var(--background); }
+  .requirements-content { max-width: 700px; margin: 0 auto; }
+  .requirement-item { display: flex; align-items: center; padding: .8rem 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+  .requirement-item:last-child { border-bottom: none; }
+  .requirement-item strong { color: var(--accent-color); min-width: 220px; margin-right: 20px; }
+  @media (max-width: 768px) { .requirement-item { flex-direction: column; align-items: flex-start; gap: .3rem; } .requirement-item strong { min-width: auto; margin-right: 0; } }
+</style>

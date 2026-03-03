@@ -1,0 +1,32 @@
+---
+import { useTranslations, getLangFromUrl, teamData, type Lang } from '../i18n/ui';
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+const members = teamData[lang];
+---
+
+<section id="team" class="team">
+  <div class="container">
+    <h2 class="section-title">{t('team.title')}</h2>
+    <div class="team-grid">
+      {members.map((m) => (
+        <div class="team-member">
+          <h3>{m.name}</h3>
+          <p class="role">{m.role}</p>
+          {m.skills && <p class="skills">{m.skills}</p>}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .team { padding: var(--spacing-xl) 0; background-color: var(--background); }
+  .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px,1fr)); gap: var(--spacing-md); }
+  .team-member { padding: var(--spacing-md); border: var(--border); border-radius: var(--border-radius); background-color: var(--foreground); transition: transform .3s ease; }
+  .team-member:hover { transform: translateY(-5px); }
+  .team-member h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: var(--spacing-xs); color: var(--accent-color); }
+  .team-member .role { font-weight: 500; margin-bottom: var(--spacing-xs); }
+  .team-member .skills { font-size: .9rem; color: var(--accent-color); opacity: .8; }
+  @media (max-width: 576px) { .team-grid { grid-template-columns: 1fr; } }
+</style>

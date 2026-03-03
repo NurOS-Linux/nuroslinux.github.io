@@ -1,0 +1,59 @@
+---
+import { useTranslations, getLangFromUrl, type Lang } from '../../i18n/ui';
+
+interface Props {
+  slug: string;
+  title: string;
+  description?: string;
+  publishedAt?: Date;
+  author?: string;
+  tags?: string[];
+  lang?: Lang;
+}
+
+const { slug, title, description, publishedAt, author, tags = [], lang: propLang } = Astro.props;
+const lang = propLang ?? (getLangFromUrl(Astro.url) as Lang);
+const t = useTranslations(lang);
+const blogBase = lang === 'ru' ? '/ru/blog' : '/blog';
+
+const dateStr = publishedAt
+  ? publishedAt.toLocaleDateString(lang === 'ru' ? 'ru-RU' : 'en-US', {
+      year: 'numeric', month: 'long', day: 'numeric',
+    })
+  : null;
+---
+
+<article class="blog-card">
+  <div class="card-body">
+    {tags.length > 0 && (
+      <div class="tags">
+        {tags.map((tag) => <span class="tag">{tag}</span>)}
+      </div>
+    )}
+    <h2 class="card-title">
+      <a href={`${blogBase}/${slug}`}>{title}</a>
+    </h2>
+    {description && <p class="card-desc">{description}</p>}
+  </div>
+  <div class="card-footer">
+    {author && <span class="author">{author}</span>}
+    {dateStr && <time datetime={publishedAt?.toISOString()}>{dateStr}</time>}
+    <a href={`${blogBase}/${slug}`} class="read-more">{t('blog.read')}</a>
+  </div>
+</article>
+
+<style>
+  .blog-card { background-color: var(--foreground); border: var(--border); border-radius: var(--border-radius); display: flex; flex-direction: column; transition: transform .3s ease, box-shadow .3s ease; }
+  .blog-card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,.25); }
+  .card-body { padding: var(--spacing-md); flex: 1; }
+  .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: var(--spacing-sm); }
+  .tag { font-size: .75rem; padding: .2rem .6rem; background-color: rgba(26,91,156,.25); color: var(--accent-color); border-radius: 999px; border: 1px solid rgba(138,180,232,.25); }
+  .card-title { font-size: 1.25rem; font-weight: 600; margin-bottom: var(--spacing-xs); line-height: 1.4; }
+  .card-title a { color: var(--text-color); transition: color .3s ease; }
+  .card-title a:hover { color: var(--accent-color); opacity: 1; }
+  .card-desc { font-size: .95rem; color: rgba(224,224,224,.75); line-height: 1.6; }
+  .card-footer { display: flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-sm) var(--spacing-md); border-top: var(--border); font-size: .85rem; color: rgba(224,224,224,.5); }
+  .author { flex: 1; color: var(--accent-color); opacity: .8; }
+  .read-more { color: var(--accent-color); font-weight: 500; white-space: nowrap; opacity: 1; }
+  .read-more:hover { color: white; opacity: 1; }
+</style>

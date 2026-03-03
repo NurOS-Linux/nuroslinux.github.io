@@ -1,0 +1,41 @@
+---
+import { useTranslations, getLangFromUrl, featuresData, type Lang } from '../i18n/ui';
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+const features = featuresData[lang];
+---
+
+<section id="features" class="features">
+  <div class="container">
+    <h2 class="section-title">{t('features.title')}</h2>
+    <div class="feature-grid">
+      {features.map((f) => (
+        <div class="feature-card">
+          <h3>{f.title}</h3>
+          <p>{f.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .features { padding: var(--spacing-xl) 0; background-color: var(--secondary-color); }
+  .feature-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 1.25rem; }
+  .feature-card {
+    background-color: var(--foreground);
+    padding: var(--spacing-md);
+    border: var(--border);
+    border-top: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    transition: transform .25s ease, box-shadow .25s ease, border-top-color .25s ease;
+  }
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0,0,0,.25);
+    border-top-color: var(--accent-color);
+  }
+  .feature-card h3 { margin-bottom: 0.6rem; font-size: 1.05rem; font-weight: 600; color: var(--accent-color); }
+  .feature-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+  @media (max-width: 576px) { .feature-grid { grid-template-columns: 1fr; } }
+</style>

@@ -1,44 +1,26 @@
 {
-  "name": "nuros-website",
-  "version": "0.1.0",
+  "name": "nuroslinux-github-io",
+  "version": "1.0.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/dom": "^10.4.1",
-    "@testing-library/jest-dom": "^6.8.0",
-    "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^14.6.1",
-    "nth-check": "^2.1.1",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-scripts": "^5.0.1",
-    "web-vitals": "^5.1.0"
-  },
-  "overrides": {
-    "nth-check": "^2.1.1",
-    "postcss": "^8.4.31"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "astro dev",
+    "build": "astro build --config astro.config.prod.mjs",
+    "build:local": "astro build",
+    "preview": "astro preview --config astro.config.prod.mjs",
+    "astro": "astro"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "dependencies": {
+    "@astrojs/markdoc": "^0.11.0",
+    "@astrojs/react": "^3.6.2",
+    "@keystatic/astro": "^5.0.0",
+    "@keystatic/core": "^0.5.33",
+    "astro": "^4.16.18",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@astrojs/node": "^8.3.4",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1"
   }
 }

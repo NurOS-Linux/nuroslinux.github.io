@@ -1,0 +1,95 @@
+:root {
+  --primary-color: #1a5b9c;
+  --primary-hover: #1568b3;
+  --secondary-color: #1e1e1e;
+  --accent-color: #8ab4e8;
+  --text-color: #e0e0e0;
+  --text-muted: rgba(224,224,224,0.55);
+  --background: #181818;
+  --foreground: #232323;
+  --border: 1px solid rgba(255,255,255,0.08);
+  --border-radius: 10px;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 6rem;
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background);
+  font-size: 16px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+a {
+  text-decoration: none;
+  color: var(--accent-color);
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.85;
+}
+
+ul {
+  list-style: none;
+}
+
+.section-title {
+  font-size: 1.85rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+  color: var(--text-color);
+  letter-spacing: -0.01em;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.4rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  border: none;
+  border-radius: var(--border-radius);
+}
+
+.btn:hover {
+  background-color: var(--primary-hover);
+  color: #fff;
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid rgba(138,180,232,0.35);
+  color: var(--accent-color);
+}
+
+.btn-outline:hover {
+  background-color: rgba(138,180,232,0.08);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}

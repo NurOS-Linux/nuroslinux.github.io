@@ -1,0 +1,51 @@
+---
+import { useTranslations, getLangFromUrl, type Lang } from '../i18n/ui';
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+---
+
+<section id="home" class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h2 class="glowing-title">NurOS</h2>
+      <p class="glowing-subtitle">{t('hero.subtitle')}</p>
+      <div class="cta-buttons">
+        <a href={lang === 'ru' ? '/ru/releases' : '/releases'} class="btn glowing-btn">{t('hero.cta')}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const hero = document.querySelector('.hero') as HTMLElement | null;
+  hero?.addEventListener('mousemove', (e: MouseEvent) => {
+    hero.style.backgroundPosition = `${(e.clientX / window.innerWidth) * 100}% ${(e.clientY / window.innerHeight) * 100}%`;
+  });
+</script>
+
+<style>
+  .hero { height: 100vh; display: flex; align-items: center; padding-top: 80px; background: linear-gradient(45deg,#0f4788,#1a5b9c,#8ab4e8,#0f4788); background-size: 400% 400%; animation: gradientShift 8s ease infinite; }
+  @keyframes gradientShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+  .hero-content { max-width: 600px; text-align: center; margin: 0 auto; }
+  .glowing-title { font-size: 3.5rem; font-weight: 700; margin-bottom: var(--spacing-sm); color: white; text-shadow: 0 0 10px rgba(255,255,255,.5),0 0 20px rgba(138,180,232,.5); animation: textPulse 2s ease-in-out infinite alternate; }
+  .glowing-subtitle { font-size: 1.5rem; margin-bottom: var(--spacing-md); color: rgba(255,255,255,.9); text-shadow: 0 0 10px rgba(138,180,232,.3); }
+  @keyframes textPulse { from{text-shadow:0 0 10px rgba(255,255,255,.5),0 0 20px rgba(138,180,232,.5)} to{text-shadow:0 0 15px rgba(255,255,255,.7),0 0 25px rgba(138,180,232,.7),0 0 35px rgba(26,91,156,.5)} }
+  .glowing-btn {
+    font-size: 1.05rem;
+    padding: 0.8rem 2rem;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #fff;
+    font-weight: 700;
+    transition: background .25s, transform .25s, box-shadow .25s;
+  }
+  .glowing-btn:hover {
+    background: rgba(255,255,255,0.22);
+    box-shadow: 0 0 24px rgba(138,180,232,0.4);
+    transform: translateY(-2px);
+    color: #fff;
+    opacity: 1;
+  }
+  @media (max-width: 768px) { .glowing-title { font-size: 2.5rem; } }
+  @media (max-width: 576px) { .glowing-title { font-size: 2rem; } }
+</style>
