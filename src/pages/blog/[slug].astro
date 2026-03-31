@@ -18,7 +18,7 @@ const dateStr = post.data.publishedAt
 <BlogLayout title={`${post.data.title} — NurOS Blog`} description={post.data.description}>
   <article class="post-article">
     <div class="container">
-      <a href="/blog" class="back-link">← Back to blog</a>
+      <a href="/blog" class="back-link"><span aria-hidden="true">←</span> Back to blog</a>
 
       {post.data.tags && post.data.tags.length > 0 && (
         <div class="tags">{post.data.tags.map((tag) => <span class="tag">{tag}</span>)}</div>

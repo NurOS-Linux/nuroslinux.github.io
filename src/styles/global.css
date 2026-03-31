@@ -41,6 +41,12 @@ body {
   padding: 0 var(--spacing-md);
 }
 
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
 a {
   text-decoration: none;
   color: var(--accent-color);

@@ -23,8 +23,8 @@ const altUrl = getAlternateUrl(path, altLang);
       </div>
     </a>
 
-    <nav id="main-nav">
-      <ul>
+    <nav id="main-nav" aria-label={lang === 'ru' ? 'Основная навигация' : 'Main navigation'}>
+      <ul role="list">
         <li><a href={navHref('#home')}>{t('nav.home')}</a></li>
         <li><a href={navHref('#about')}>{t('nav.about')}</a></li>
         <li><a href={navHref('#features')}>{t('nav.features')}</a></li>
@@ -32,12 +32,14 @@ const altUrl = getAlternateUrl(path, altLang);
           <a
             href={lang === 'ru' ? '/ru/releases' : '/releases'}
             class:list={[{ active: path.includes('/releases') }]}
+            aria-current={path.includes('/releases') ? 'page' : undefined}
           >{t('nav.download')}</a>
         </li>
         <li>
           <a
             href={lang === 'ru' ? '/ru/team' : '/team'}
             class:list={[{ active: path === '/team' || path === '/ru/team' }]}
+            aria-current={path === '/team' || path === '/ru/team' ? 'page' : undefined}
           >{t('nav.team')}</a>
         </li>
         <li><a href={navHref('#community')}>{t('nav.community')}</a></li>
@@ -45,6 +47,7 @@ const altUrl = getAlternateUrl(path, altLang);
           <a
             href={lang === 'ru' ? '/ru/blog' : '/blog'}
             class:list={[{ active: path.includes('/blog') }]}
+            aria-current={path.includes('/blog') ? 'page' : undefined}
           >{t('nav.blog')}</a>
         </li>
       </ul>
@@ -52,8 +55,8 @@ const altUrl = getAlternateUrl(path, altLang);
 
     <div class="header-actions">
       <div class="lang-toggle">
-        <a href={getAlternateUrl(path, 'en')} class:list={[{ active: lang === 'en' }]}>EN</a>
-        <a href={getAlternateUrl(path, 'ru')} class:list={[{ active: lang === 'ru' }]}>RU</a>
+        <a href={getAlternateUrl(path, 'en')} class:list={[{ active: lang === 'en' }]} aria-current={lang === 'en' ? 'true' : undefined} aria-label="English">EN</a>
+        <a href={getAlternateUrl(path, 'ru')} class:list={[{ active: lang === 'ru' }]} aria-current={lang === 'ru' ? 'true' : undefined} aria-label="Русский">RU</a>
       </div>
       <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="main-nav">
         <span></span>

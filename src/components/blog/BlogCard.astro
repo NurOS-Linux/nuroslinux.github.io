@@ -31,14 +31,14 @@ const dateStr = publishedAt
       </div>
     )}
     <h2 class="card-title">
-      <a href={`${blogBase}/${slug}`}>{title}</a>
+      <a href={`${blogBase}/${slug}`} aria-label={title}>{title}</a>
     </h2>
     {description && <p class="card-desc">{description}</p>}
   </div>
   <div class="card-footer">
     {author && <span class="author">{author}</span>}
     {dateStr && <time datetime={publishedAt?.toISOString()}>{dateStr}</time>}
-    <a href={`${blogBase}/${slug}`} class="read-more">{t('blog.read')}</a>
+    <a href={`${blogBase}/${slug}`} class="read-more" aria-hidden="true" tabindex="-1">{t('blog.read')}</a>
   </div>
 </article>
 
