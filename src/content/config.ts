@@ -10,8 +10,10 @@ const postSchema = z.object({
 
 const postsEn = defineCollection({ type: 'content', schema: postSchema });
 const postsRu = defineCollection({ type: 'content', schema: postSchema });
+const postsKz = defineCollection({ type: 'content', schema: postSchema });
 
 export const collections = {
   'posts-en': postsEn,
   'posts-ru': postsRu,
+  'posts-kz': postsKz,
 };

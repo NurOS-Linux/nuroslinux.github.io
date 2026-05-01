@@ -1,10 +1,11 @@
 import en from './locales/en.json';
 import ru from './locales/ru.json';
+import kz from './locales/kz.json';
 
 export const defaultLang = 'en' as const;
-export type Lang = 'en' | 'ru';
+export type Lang = 'en' | 'ru' | 'kz';
 
-export const ui = { en, ru } as const;
+export const ui = { en, ru, kz } as const;
 
 // Structured data (features, team)
 export const featuresData: Record<Lang, { title: string; description: string }[]> = {
@@ -19,6 +20,12 @@ export const featuresData: Record<Lang, { title: string; description: string }[]
     { title: 'Формат APG', description: 'Собственный формат пакетов с быстрой установкой и полной поддержкой зависимостей.' },
     { title: 'Современность', description: 'Чистый интерфейс с интуитивно понятными инструментами настройки системы.' },
     { title: 'Сообщество', description: 'Активная поддержка через Telegram и GitHub.' },
+  ],
+  kz: [
+    { title: 'Тәуелсіздік', description: 'Басқа дистрибутивтерге негізделмеген, жүйені толық басқаруды қамтамасыз етеді.' },
+    { title: 'APG форматы', description: 'Жылдам орнату және тәуелділіктерді толық қолдауы бар өзіндік пакет форматы.' },
+    { title: 'Заманауилық', description: 'Интуитивті жүйе конфигурациясы құралдары бар таза интерфейс.' },
+    { title: 'Қоғамдастық', description: 'Telegram және GitHub арқылы белсенді қолдау.' },
   ],
 };
 
@@ -51,6 +58,20 @@ export const teamData: Record<Lang, { name: string; role: string; skills: string
     { name: 'XCubicArnament', role: 'Разработчик', skills: 'C, C++, Python, JS' },
     { name: 'wholos', role: 'Разработчик', skills: 'C, C++, Nim, Rust' },
   ],
+  kz: [
+    { name: 'CosmoBlade', role: 'Тимлид, Әзірлеуші, Дизайнер', skills: 'C++, Python, Go, JS, C' },
+    { name: 'AnmiTaliDev', role: 'Негізтаушы, Координатор', skills: 'Алюминий қияр' },
+    { name: 'Ruzen', role: 'Әзірлеуші, Орнатушы және Tulpar Maintainer', skills: 'C#, C++, Haskell, Python' },
+    { name: 'Meigoc', role: 'Әзірлеуші, Tulpar-server Maintainer', skills: 'Java, Python, C++' },
+    { name: 'chelik002', role: 'Әзірлеуші, Дизайнер', skills: 'Python' },
+    { name: 'm1lkydev', role: 'Әзірлеуші, Тұсқағаз дизайнері', skills: 'Python, Go, Lua' },
+    { name: 'Space', role: 'Әзірлеуші, Aether Apps Әзірлеушісі', skills: 'Python, C#' },
+    { name: 'Rav1non', role: 'Әзірлеуші, Пакет жинаушы', skills: 'Python, Java' },
+    { name: 'got/gotrt', role: 'Әзірлеуші', skills: 'Go, OCaml, C' },
+    { name: 'b0nn133', role: 'Дизайнер, Әзірлеуші', skills: 'Vala, C#, Lua, Python' },
+    { name: 'XCubicArnament', role: 'Әзірлеуші', skills: 'C, C++, Python, JS' },
+    { name: 'wholos', role: 'Әзірлеуші', skills: 'C, C++, Nim, Rust' },
+  ],
 };
 
 // Download variants
@@ -72,7 +93,9 @@ export const downloadEditions: DownloadEdition[] = [
 
 // Helpers
 export function getLangFromUrl(url: URL): Lang {
-  return url.pathname.startsWith('/ru') ? 'ru' : 'en';
+  if (url.pathname.startsWith('/ru')) return 'ru';
+  if (url.pathname.startsWith('/kz')) return 'kz';
+  return 'en';
 }
 
 export function useTranslations(lang: Lang) {
@@ -84,6 +107,12 @@ export function useTranslations(lang: Lang) {
 /** Returns the equivalent URL in the target language. */
 export function getAlternateUrl(pathname: string, targetLang: Lang): string {
   const isRu = pathname.startsWith('/ru');
-  const base = isRu ? pathname.slice(3) || '/' : pathname;
-  return targetLang === 'ru' ? (base === '/' ? '/ru' : `/ru${base}`) : base;
+  const isKz = pathname.startsWith('/kz');
+  let base: string;
+  if (isRu || isKz) base = pathname.slice(3) || '/';
+  else base = pathname;
+
+  if (targetLang === 'ru') return base === '/' ? '/ru' : `/ru${base}`;
+  if (targetLang === 'kz') return base === '/' ? '/kz' : `/kz${base}`;
+  return base;
 }

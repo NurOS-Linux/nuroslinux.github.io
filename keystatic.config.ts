@@ -30,5 +30,12 @@ export default config({
       format: { contentField: 'content' },
       schema: postSchema,
     }),
+    postsKz: collection({
+      label: '📝 Жазбалар — Қазақша',
+      slugField: 'title',
+      path: 'src/content/posts-kz/*',
+      format: { contentField: 'content' },
+      schema: postSchema,
+    }),
   },
 });

@@ -14,10 +14,11 @@ interface Props {
 const { slug, title, description, publishedAt, author, tags = [], lang: propLang } = Astro.props;
 const lang = propLang ?? (getLangFromUrl(Astro.url) as Lang);
 const t = useTranslations(lang);
-const blogBase = lang === 'ru' ? '/ru/blog' : '/blog';
+const blogBase = lang === 'ru' ? '/ru/blog' : lang === 'kz' ? '/kz/blog' : '/blog';
 
+const dateLocale = lang === 'ru' ? 'ru-RU' : lang === 'kz' ? 'kk-KZ' : 'en-US';
 const dateStr = publishedAt
-  ? publishedAt.toLocaleDateString(lang === 'ru' ? 'ru-RU' : 'en-US', {
+  ? publishedAt.toLocaleDateString(dateLocale, {
       year: 'numeric', month: 'long', day: 'numeric',
     })
   : null;

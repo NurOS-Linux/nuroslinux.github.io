@@ -4,48 +4,45 @@ import { useTranslations, getLangFromUrl, getAlternateUrl, type Lang } from '../
 const lang = getLangFromUrl(Astro.url) as Lang;
 const t = useTranslations(lang);
 const path = Astro.url.pathname;
-const isHome = path === '/' || path === '/ru' || path === '/ru/';
+const isHome = path === '/' || path === '/ru' || path === '/ru/' || path === '/kz' || path === '/kz/';
 
 const navHref = (anchor: string) => {
-  const base = lang === 'ru' ? '/ru' : '';
+  const base = lang === 'ru' ? '/ru' : lang === 'kz' ? '/kz' : '';
   return isHome ? anchor : `${base}/${anchor}`;
 };
-
-const altLang = lang === 'en' ? 'ru' : 'en';
-const altUrl = getAlternateUrl(path, altLang);
 ---
 
 <header>
   <div class="container">
-    <a href={lang === 'ru' ? '/ru' : '/'} class="logo-link" aria-label="NurOS — Home">
+    <a href={lang === 'ru' ? '/ru' : lang === 'kz' ? '/kz' : '/'} class="logo-link" aria-label="NurOS — Home">
       <div class="logo">
         <span class="logo-text">NurOS</span>
       </div>
     </a>
 
-    <nav id="main-nav" aria-label={lang === 'ru' ? 'Основная навигация' : 'Main navigation'}>
+    <nav id="main-nav" aria-label={lang === 'ru' ? 'Основная навигация' : lang === 'kz' ? 'Негізгі навигация' : 'Main navigation'}>
       <ul role="list">
         <li><a href={navHref('#home')}>{t('nav.home')}</a></li>
         <li><a href={navHref('#about')}>{t('nav.about')}</a></li>
         <li><a href={navHref('#features')}>{t('nav.features')}</a></li>
         <li>
           <a
-            href={lang === 'ru' ? '/ru/releases' : '/releases'}
+            href={lang === 'ru' ? '/ru/releases' : lang === 'kz' ? '/kz/releases' : '/releases'}
             class:list={[{ active: path.includes('/releases') }]}
             aria-current={path.includes('/releases') ? 'page' : undefined}
           >{t('nav.download')}</a>
         </li>
         <li>
           <a
-            href={lang === 'ru' ? '/ru/team' : '/team'}
-            class:list={[{ active: path === '/team' || path === '/ru/team' }]}
-            aria-current={path === '/team' || path === '/ru/team' ? 'page' : undefined}
+            href={lang === 'ru' ? '/ru/team' : lang === 'kz' ? '/kz/team' : '/team'}
+            class:list={[{ active: path.endsWith('/team') }]}
+            aria-current={path.endsWith('/team') ? 'page' : undefined}
           >{t('nav.team')}</a>
         </li>
         <li><a href={navHref('#community')}>{t('nav.community')}</a></li>
         <li>
           <a
-            href={lang === 'ru' ? '/ru/blog' : '/blog'}
+            href={lang === 'ru' ? '/ru/blog' : lang === 'kz' ? '/kz/blog' : '/blog'}
             class:list={[{ active: path.includes('/blog') }]}
             aria-current={path.includes('/blog') ? 'page' : undefined}
           >{t('nav.blog')}</a>
@@ -57,6 +54,7 @@ const altUrl = getAlternateUrl(path, altLang);
       <div class="lang-toggle">
         <a href={getAlternateUrl(path, 'en')} class:list={[{ active: lang === 'en' }]} aria-current={lang === 'en' ? 'true' : undefined} aria-label="English">EN</a>
         <a href={getAlternateUrl(path, 'ru')} class:list={[{ active: lang === 'ru' }]} aria-current={lang === 'ru' ? 'true' : undefined} aria-label="Русский">RU</a>
+        <a href={getAlternateUrl(path, 'kz')} class:list={[{ active: lang === 'kz' }]} aria-current={lang === 'kz' ? 'true' : undefined} aria-label="Қазақша">KZ</a>
       </div>
       <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="main-nav">
         <span></span>

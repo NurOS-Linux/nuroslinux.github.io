@@ -1,0 +1,64 @@
+---
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts-kz');
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const dateStr = post.data.publishedAt
+  ? post.data.publishedAt.toLocaleDateString('kk-KZ', { year: 'numeric', month: 'long', day: 'numeric' })
+  : null;
+---
+
+<BlogLayout title={`${post.data.title} — NurOS Blog`} description={post.data.description}>
+  <article class="post-article">
+    <div class="container">
+      <a href="/kz/blog" class="back-link"><span aria-hidden="true">←</span> Блогқа оралу</a>
+
+      {post.data.tags && post.data.tags.length > 0 && (
+        <div class="tags">{post.data.tags.map((tag) => <span class="tag">{tag}</span>)}</div>
+      )}
+
+      <h1 class="post-title">{post.data.title}</h1>
+
+      <div class="post-meta">
+        {post.data.author && <span class="author">{post.data.author}</span>}
+        {dateStr && <time datetime={post.data.publishedAt?.toISOString()}>{dateStr}</time>}
+      </div>
+
+      {post.data.description && <p class="post-description">{post.data.description}</p>}
+
+      <div class="post-content"><Content /></div>
+    </div>
+  </article>
+</BlogLayout>
+
+<style>
+  .post-article { padding: var(--spacing-xl) 0; }
+  .back-link { display: inline-block; color: var(--accent-color); margin-bottom: var(--spacing-md); font-size: .95rem; opacity: .8; }
+  .back-link:hover { opacity: 1; }
+  .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: var(--spacing-sm); }
+  .tag { font-size: .75rem; padding: .2rem .6rem; background-color: rgba(26,91,156,.25); color: var(--accent-color); border-radius: 999px; border: 1px solid rgba(138,180,232,.25); }
+  .post-title { font-size: 2.2rem; font-weight: 700; color: var(--text-color); line-height: 1.3; margin-bottom: var(--spacing-sm); }
+  .post-meta { display: flex; align-items: center; gap: var(--spacing-sm); font-size: .9rem; color: rgba(224,224,224,.55); margin-bottom: var(--spacing-md); }
+  .author { color: var(--accent-color); opacity: .8; }
+  .post-description { font-size: 1.1rem; color: rgba(224,224,224,.75); border-left: 3px solid var(--primary-color); padding-left: var(--spacing-sm); margin-bottom: var(--spacing-lg); }
+  .post-content { max-width: 760px; font-size: 1.05rem; line-height: 1.8; }
+  .post-content :global(h2) { font-size: 1.5rem; color: var(--accent-color); margin-top: var(--spacing-lg); margin-bottom: var(--spacing-sm); }
+  .post-content :global(h3) { font-size: 1.25rem; margin-top: var(--spacing-md); margin-bottom: var(--spacing-sm); }
+  .post-content :global(p) { margin-bottom: var(--spacing-md); }
+  .post-content :global(ul), .post-content :global(ol) { padding-left: var(--spacing-md); margin-bottom: var(--spacing-md); }
+  .post-content :global(li) { list-style: disc; margin-bottom: .4rem; }
+  .post-content :global(ol li) { list-style: decimal; }
+  .post-content :global(code) { background-color: var(--foreground); color: var(--accent-color); padding: .15rem .4rem; border-radius: 4px; font-size: .9em; }
+  .post-content :global(pre) { background-color: var(--foreground); border: var(--border); border-radius: var(--border-radius); padding: var(--spacing-md); overflow-x: auto; margin-bottom: var(--spacing-md); }
+  .post-content :global(pre code) { background: none; padding: 0; }
+  .post-content :global(blockquote) { border-left: 3px solid var(--primary-color); padding-left: var(--spacing-md); color: rgba(224,224,224,.7); margin-bottom: var(--spacing-md); }
+  .post-content :global(hr) { border: none; border-top: var(--border); margin: var(--spacing-lg) 0; }
+  @media (max-width: 768px) { .post-title { font-size: 1.6rem; } }
+</style>
