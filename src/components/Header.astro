@@ -16,7 +16,7 @@ const navHref = (anchor: string) => {
   <div class="container">
     <a href={lang === 'ru' ? '/ru' : lang === 'kz' ? '/kz' : '/'} class="logo-link" aria-label="NurOS — Home">
       <div class="logo">
-        <span class="logo-text">NurOS</span>
+        <span class="logo-text">Nur<span class="logo-os">OS</span></span>
       </div>
     </a>
 
@@ -103,7 +103,8 @@ const navHref = (anchor: string) => {
 
   .logo-link { text-decoration: none; opacity: 1; }
   .logo-link:hover { opacity: 1; }
-  .logo-text { font-size: 1.5rem; font-weight: 600; color: var(--text-color); line-height: 1.2; }
+  .logo-text { font-family: 'Inter', sans-serif; font-size: 1.5rem; font-weight: 600; letter-spacing: -0.01em; color: var(--text-color); line-height: 1.2; }
+  .logo-os { color: var(--primary-color); }
   .tagline { font-size: 0.875rem; color: var(--accent-color); }
 
   nav ul { display: flex; list-style: none; margin: 0; padding: 0; }

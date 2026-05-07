@@ -22,11 +22,47 @@ const lang = getLangFromUrl(Astro.url);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#0d0d0d" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" />
     <link rel="icon" href="/favicon.png" type="image/png" />
     <title>{title}</title>
   </head>
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <slot />
+    <script is:inline src="https://keepandroidopen.org/banner.js?size=minimal&animation=off"></script>
+    <style>
+      .kao-banner {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 1100;
+      }
+    </style>
+    <script is:inline>
+      (function () {
+        function adjustHeader() {
+          var banner = document.querySelector('.kao-banner');
+          var header = document.querySelector('header');
+          if (!header) return;
+          if (banner && banner.style.display !== 'none') {
+            header.style.top = banner.offsetHeight + 'px';
+          } else {
+            header.style.top = '0';
+          }
+        }
+        window.addEventListener('load', function () {
+          adjustHeader();
+          var banner = document.querySelector('.kao-banner');
+          if (banner) {
+            new MutationObserver(adjustHeader).observe(banner, { attributes: true, attributeFilter: ['style'] });
+          }
+        });
+        window.addEventListener('resize', adjustHeader);
+      })();
+    </script>
   </body>
 </html>
